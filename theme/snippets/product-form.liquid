@@ -68,10 +68,32 @@
           {% endif %}
         </div>
       </div>
+    
     {%- comment -%}
       Button/swatch colleciton of variant options
     {%- endcomment -%}
     {%- elsif section.settings.variant_style == 'buttons' or section.settings.variant_style == 'swatches' -%}
+      {%- comment -%}
+        Alternative products
+      {%- endcomment -%}
+      
+      <div class="selection-wrapper collection-items">
+        {% for collection in product.collections %}
+        <p>
+        {% paginate collection.products by 5 %}
+          {% for other_product in collection.products %}
+            {% unless product.title == other_product.title %}
+          {% capture my_title %}{{ other_product.title | replace: collection.title, "" | replace: " - ", "" }}{% endcapture %}
+          {% capture my_colour %}
+            {{ my_title | downcase }}
+          {% endcapture %}
+        <a href="{{ other_product.url | within: collection }}">{{ my_title }}</a>
+            {% endunless %}
+          {% endfor %}
+        {% endpaginate %}
+		</p>
+        {% endfor %}
+      </div>
       <div class="selection-wrapper variant radio js">
         {% for option in product.options_with_values %}
           {% include 'swatch' %}
