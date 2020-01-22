@@ -80,6 +80,7 @@
       <div class="selection-wrapper collection-items">
         {% for collection in product.collections %}
         <p>
+          Also available: 
         {% paginate collection.products by 5 %}
           {% for other_product in collection.products %}
             {% unless product.title == other_product.title %}

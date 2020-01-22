@@ -39,7 +39,9 @@
             <div class="collection-container">
               <header>
                 <h4>{{ collection.title }}</h4>
-                <a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>
+                {% comment %}
+                  <a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>
+                {% endcomment %}
               </header>
 
               <div class="product-container">
@@ -60,7 +62,9 @@
           <div class="collection-container">
             <header>
               <h4>{{ collection.title }}</h4>
-              <a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>
+              {% comment %}
+                <a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>
+              {% endcomment %}
             </header>
 
             <div class="product-container">

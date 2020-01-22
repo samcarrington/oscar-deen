@@ -3182,6 +3182,7 @@ header.site-header {
     nav.nav-bar {
       flex: 1 1 auto;
       text-align: right;
+      align-self: flex-end;
       position: static;
       @include mediaQuery($max, $largeMobile) {
         display: none;
@@ -3200,7 +3201,7 @@ header.site-header {
 
     nav.nav-bar {
       padding: 0;
-      margin: 0;
+      margin: 0 0 4px;
     }
   }
   &.minimal {
@@ -4516,7 +4517,7 @@ div.gallery {
   }
 
   .collection-container {
-    padding: 12px 0 40px 0;
+    padding: 12px 0 10px 0; // was 12px 0 40px 0
   }
 
   &.blog {
