@@ -58,7 +58,7 @@ $primaryTitleTextTransform: none;
 $primaryTitleTextWeight: 400;
 
 $primaryBackgroundColor: #ffffff;
-$primaryAccentColor: #4f4f4f;
+$primaryAccentColor: #000000;
 
 // Dynamically detect the accent color's lightness
 // set the value to black or white for text on top
@@ -77,11 +77,11 @@ $primaryImageLabelColor: $primaryBackgroundColor;
 $primaryImageLabelAccentColor: $primaryAccentColor;
 $primaryImageLabelTextColor: $primaryTextColor;
 
-$contentBoxBackgroundColor: #f3f3f3;
+$contentBoxBackgroundColor: #ffffff;
 
 // Outer border & util nav
 $siteBorderColor: #ffffff;
-$siteBorderTextColor: #505050;
+$siteBorderTextColor: #000000;
 $siteBorderAll: false;
 
 // Site header & nav
@@ -128,14 +128,14 @@ $productPhotoAlign: left;
 
 $footerFullWidth: false;
 $footerBackgroundColor: #ffffff;
-$footerTitleTextColor: #606060;
-$footerNavTextColor: #565656;
+$footerTitleTextColor: #000000;
+$footerNavTextColor: #000000;
 $footerTextColor: mix($footerTitleTextColor, $footerBackgroundColor, 80%);
 $footerTextAlignment: center;
 
 $verticalContainerPadding: 40px;
 
-$productImageRatioPercentage: 100%;
+$productImageRatioPercentage: 75%;
 $productImageAutoCrop: false;
 
 
@@ -187,8 +187,8 @@ $max: max-width;
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  src: url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n4.c60eff80c85b729b1eec1d8aa62c6634592a5112.woff2?&hmac=756917118bcd156fecaaf36223a1ce59e85a0b4c6943a887f3a9b6ed2d6dca9d") format("woff2"),
-       url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n4.7f421e77d010b4ff2a22a0cf3c24b022b49a79fe.woff?&hmac=3598f768b941e285320916d65b1f8c57a76c4bdf0ae20b0e1a46800a6496ec94") format("woff");
+  src: url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n4.c60eff80c85b729b1eec1d8aa62c6634592a5112.woff2?h1=b3NjYXJkZWVuLmNvbQ&hmac=ec9e70b4cb2e9275bd98c9c77b8c2d517b23c971b1ca786554bb76909c953c44") format("woff2"),
+       url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n4.7f421e77d010b4ff2a22a0cf3c24b022b49a79fe.woff?h1=b3NjYXJkZWVuLmNvbQ&hmac=db361e849e0b4d1e17f0b480dd70cd8d727d5b86460201b9712ae223518ccdb4") format("woff");
 }
 
 @font-face {
@@ -196,8 +196,8 @@ $max: max-width;
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  src: url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n4.c60eff80c85b729b1eec1d8aa62c6634592a5112.woff2?&hmac=756917118bcd156fecaaf36223a1ce59e85a0b4c6943a887f3a9b6ed2d6dca9d") format("woff2"),
-       url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n4.7f421e77d010b4ff2a22a0cf3c24b022b49a79fe.woff?&hmac=3598f768b941e285320916d65b1f8c57a76c4bdf0ae20b0e1a46800a6496ec94") format("woff");
+  src: url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n4.c60eff80c85b729b1eec1d8aa62c6634592a5112.woff2?h1=b3NjYXJkZWVuLmNvbQ&hmac=ec9e70b4cb2e9275bd98c9c77b8c2d517b23c971b1ca786554bb76909c953c44") format("woff2"),
+       url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n4.7f421e77d010b4ff2a22a0cf3c24b022b49a79fe.woff?h1=b3NjYXJkZWVuLmNvbQ&hmac=db361e849e0b4d1e17f0b480dd70cd8d727d5b86460201b9712ae223518ccdb4") format("woff");
 }
 
 @font-face {
@@ -205,8 +205,8 @@ $max: max-width;
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  src: url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n4.c60eff80c85b729b1eec1d8aa62c6634592a5112.woff2?&hmac=756917118bcd156fecaaf36223a1ce59e85a0b4c6943a887f3a9b6ed2d6dca9d") format("woff2"),
-       url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n4.7f421e77d010b4ff2a22a0cf3c24b022b49a79fe.woff?&hmac=3598f768b941e285320916d65b1f8c57a76c4bdf0ae20b0e1a46800a6496ec94") format("woff");
+  src: url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n4.c60eff80c85b729b1eec1d8aa62c6634592a5112.woff2?h1=b3NjYXJkZWVuLmNvbQ&hmac=ec9e70b4cb2e9275bd98c9c77b8c2d517b23c971b1ca786554bb76909c953c44") format("woff2"),
+       url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n4.7f421e77d010b4ff2a22a0cf3c24b022b49a79fe.woff?h1=b3NjYXJkZWVuLmNvbQ&hmac=db361e849e0b4d1e17f0b480dd70cd8d727d5b86460201b9712ae223518ccdb4") format("woff");
 }
 
 
@@ -219,8 +219,8 @@ $max: max-width;
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src: url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n7.008e88c81552a2211bfd301db1683d87805b499a.woff2?&hmac=ecd635805d338fe374d4a3118be0fec60b0fd69daafcc9c172c086a986a22e86") format("woff2"),
-       url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n7.2b9c9337ec9af77d57e04e5a0b4ed29b6bf05d5a.woff?&hmac=bfc50c29911a5d034aeac3f9563e9e6d12cfba6c40f1e74d117dfa4d7675a01b") format("woff");
+  src: url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n7.008e88c81552a2211bfd301db1683d87805b499a.woff2?h1=b3NjYXJkZWVuLmNvbQ&hmac=2a08fcaf22078ae7a33a91fbeac74102a7b96940f202ac5a7c76d69d1761b0fa") format("woff2"),
+       url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n7.2b9c9337ec9af77d57e04e5a0b4ed29b6bf05d5a.woff?h1=b3NjYXJkZWVuLmNvbQ&hmac=68e742ecec512c278b81d26a71c352d0763e971f624b45a5b0fb0449fe0243a3") format("woff");
 }
 
 
@@ -235,8 +235,8 @@ $max: max-width;
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src: url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n7.008e88c81552a2211bfd301db1683d87805b499a.woff2?&hmac=ecd635805d338fe374d4a3118be0fec60b0fd69daafcc9c172c086a986a22e86") format("woff2"),
-       url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n7.2b9c9337ec9af77d57e04e5a0b4ed29b6bf05d5a.woff?&hmac=bfc50c29911a5d034aeac3f9563e9e6d12cfba6c40f1e74d117dfa4d7675a01b") format("woff");
+  src: url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n7.008e88c81552a2211bfd301db1683d87805b499a.woff2?h1=b3NjYXJkZWVuLmNvbQ&hmac=2a08fcaf22078ae7a33a91fbeac74102a7b96940f202ac5a7c76d69d1761b0fa") format("woff2"),
+       url("https://fonts.shopifycdn.com/source_code_pro/sourcecodepro_n7.2b9c9337ec9af77d57e04e5a0b4ed29b6bf05d5a.woff?h1=b3NjYXJkZWVuLmNvbQ&hmac=68e742ecec512c278b81d26a71c352d0763e971f624b45a5b0fb0449fe0243a3") format("woff");
 }
 
 
@@ -2519,7 +2519,7 @@ header.util {
       cursor: pointer;
       color: $siteBorderTextColor;
       background-color: $siteBorderColor;
-      background-image: url('//cdn.shopify.com/s/files/1/0267/5684/1554/t/4/assets/ico-select-util.svg?v=10091316793833601361');
+      background-image: url('//cdn.shopify.com/s/files/1/0267/5684/1554/t/4/assets/ico-select-util.svg?v=14379631845947243430');
       &:focus,
       &:hover {
         outline: 0px;
@@ -5752,7 +5752,7 @@ h6.tab__title {
     top: -1px;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('//cdn.shopify.com/s/files/1/0267/5684/1554/t/4/assets/ico-footer-dropdown.svg?v=9384192850756221547');
+    background-image: url('//cdn.shopify.com/s/files/1/0267/5684/1554/t/4/assets/ico-footer-dropdown.svg?v=14379631845947243430');
 
     .tab--active & {
       @include transform(scaleY(-1));
@@ -8479,7 +8479,7 @@ footer.site-footer {
     li.has-dropdown,
     li.has-sub-dropdown {
       > a:after {
-        background-image: url('//cdn.shopify.com/s/files/1/0267/5684/1554/t/4/assets/ico-footer-dropdown.svg?v=9384192850756221547');
+        background-image: url('//cdn.shopify.com/s/files/1/0267/5684/1554/t/4/assets/ico-footer-dropdown.svg?v=14379631845947243430');
       }
     }
   }
@@ -9036,7 +9036,7 @@ body .helper-section {
           right: 10px;
           margin-top: -2px;
 
-          background-image: url('//cdn.shopify.com/s/files/1/0267/5684/1554/t/4/assets/ico-select-util.svg?v=10091316793833601361');
+          background-image: url('//cdn.shopify.com/s/files/1/0267/5684/1554/t/4/assets/ico-select-util.svg?v=14379631845947243430');
           background-position: center;
           background-repeat: no-repeat;
           //
