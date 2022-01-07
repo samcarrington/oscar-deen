@@ -3,7 +3,7 @@
     "name": "theme_info",
     "theme_name": "District",
     "theme_author": "Style Hatch",
-    "theme_version": "3.5.2",
+    "theme_version": "3.10.2",
     "theme_documentation_url": "https://help.stylehatch.com/",
     "theme_support_url": "https://help.stylehatch.com/contact"
   },
@@ -604,61 +604,6 @@
         "id": "social_share_fancy_enabled",
         "label": "Add to Fancy",
         "default": false
-      },
-      {
-        "type": "header",
-        "content": "Open Graph"
-      },
-      {
-        "type": "image_picker",
-        "id": "default_opengraph_image",
-        "label": "Default Open Graph image",
-        "info": "Manually add a default image that will be used when visitors share on social media"
-      }
-    ]
-  },
-  {
-    "name": "Currency",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "To show multiple currencies and enable customers to checkout in their local currency use Shopify's admin settings to [enable your store to sell in multiple currencies](https://help.shopify.com/manual/payments/shopify-payments/multi-currency)."
-      },
-      {
-        "type": "checkbox",
-        "id": "show_multiple_currencies",
-        "label": "Enable currency preview",
-        "default": false,
-        "info": "If you do not have multiple currencies set up with Shopify Payments, turn on the currency preview option allowing customers to see prices in their local currency. Without Shopify Payment's multiple currency feature customers will checkout using your store's currency."
-      },
-      {
-        "type": "select",
-        "id": "currency_format",
-        "label": "Format",
-        "options": [
-          {
-            "value": "money_format",
-            "label": "Without currency ($10.00)"
-          },
-          {
-            "value": "money_with_currency_format",
-            "label": "With currency ($10.00 CAD)"
-          }
-        ],
-        "default": "money_with_currency_format"
-      },
-      {
-        "type": "text",
-        "id": "supported_currencies",
-        "label": "Supported currencies",
-        "default": "USD CAD GBP EUR JPY",
-        "info": "Use the country's ISO [currency code](http://www.xe.com/iso4217.php). Separate your currency codes with a space."
-      },
-      {
-        "type": "text",
-        "id": "default_currency",
-        "label": "Default currency",
-        "default": "USD"
       }
     ]
   }

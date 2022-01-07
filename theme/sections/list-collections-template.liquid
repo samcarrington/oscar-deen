@@ -39,9 +39,7 @@
             <div class="collection-container">
               <header>
                 <h4>{{ collection.title }}</h4>
-                {% if collection.products_count > 4 %}
-                  <a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>
-                {% endif %}
+                <a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>
               </header>
 
               <div class="product-container">
@@ -62,9 +60,7 @@
           <div class="collection-container">
             <header>
               <h4>{{ collection.title }}</h4>
-              {% if collection.products_count > 4 %}
-                <a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>
-              {% endif %}
+              <a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>
             </header>
 
             <div class="product-container">

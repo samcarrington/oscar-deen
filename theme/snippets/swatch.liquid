@@ -8,10 +8,10 @@
   <label class="single-option-radio__label"
     for="SingleOptionRadioSelector-option-{{ forloop.index0 }}">
     {{ option.name }}
-    {%- if section.settings.variant_style == 'swatches' and color_options == option_name -%}
+    {%- if section.settings.variant_style == 'swatches' and option_name contains color_options -%}
     <span class="single-option-radio__label--value label-extra">{{ option.selected_value }}</span>
     {%- endif -%}
-    {%- if section.settings.size_guide_page != blank and size_options == option_name -%}
+    {%- if section.settings.size_guide_page != blank and size_options contains option_name -%}
     <span class="label-extra"><a href="{{ pages[section.settings.size_guide_page].url }}" class="product-size-guide-{{ section.id }}">{{ pages[section.settings.size_guide_page].title }}</a></span>
     {%- endif -%}
   </label>
@@ -27,7 +27,7 @@
         {%- capture id -%}ProductRadioSelect-option-{{ option.name }}-{{ value | escape }}-{{ section.id }}{%- endcapture -%}
         {%- capture class -%}single-option-selector__radio single-option-selector-{{ section.id }}{%- endcapture -%}
 
-        {%- if color_options == option_name -%}
+        {%- if option_name contains color_options -%}
           {%- comment -%}
             CSS color and image swatches
           {%- endcomment -%} 
@@ -100,7 +100,7 @@
             id="{{ id }}">
         {%- endcapture -%}
 
-        {%- if section.settings.variant_style == 'swatches' and color_options == option_name -%}
+        {%- if section.settings.variant_style == 'swatches' and option_name contains color_options -%}
           <div class="swatch-container color {{ section.settings.variant_swatch_shape }} {% unless option_index == 1 %}{% unless available %}soldout{% endunless %}{% endunless %}" data-variant-swatch-soldout="{{ section.settings.variant_swatch_soldout }}">
             {{ radio }}
             <label

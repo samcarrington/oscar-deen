@@ -1,7 +1,7 @@
 {%- for option in product.options_with_values -%}
   {%- assign option_name = option.name | downcase -%}
   {%- assign color_options = 'products.product.color_option' | t | downcase -%}
-  {%- if color_options == option_name -%}
+  {%- if option_name contains color_options -%}
     {%- assign color_option_position = 'option' | append: option.position -%}
 
     <ul class="product-swatches product-swatches--{{ settings.collection_swatches_shape }}">        

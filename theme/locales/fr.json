@@ -1,5 +1,18 @@
 {
   "general": {
+    "accessibility": {
+      "skip_to_content": "Passer au contenu",
+      "close_modal": "Fermer",
+      "link_messages": {
+        "new_window": "S'ouvre dans une nouvelle fenêtre.",
+        "external": "Ouvre un site externe.",
+        "new_window_and_external": "Ouvre un site externe dans une nouvelle fenêtre."
+      },
+      "refresh_page": "Le choix d'une sélection entraîne l'actualisation d'une page entière.",
+      "selection_help": "Appuyez sur la touche espace puis sur les touches fléchées pour faire une sélection.",
+      "unit_price_separator": "par",
+      "error": "Erreur"
+    },
     "meta": {
       "tags": "Mots clés \"{{ tags }}\"",
       "page": "Page {{ page }}"
@@ -77,6 +90,10 @@
       "currency_at_checkout_html": "Processus {{ shop_name }} toutes les commandes en {{ shop_currency }}. Bien que le contenu de votre panier est actuellement affiché en <span class=\"selected-currency\"></span>, vous checkout en utilisant {{ shop_currency }} au taux de change le plus récent.",
       "update": "Mettre à jour",
       "checkout": "Procéder au paiement",
+      "taxes_and_shipping_at_checkout": "Taxes et frais de port calculés à la caisse",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes et <a href=\"{{ link }}\">frais de port</a> calculés à la caisse",
+      "taxes_included_but_shipping_at_checkout": "Taxes incluses et frais de port calculés à la caisse",
+      "taxes_included_and_shipping_policy_html": "Taxes incluses. <a href=\"{{ link }}\">Frais de port</a> calculés à la caisse.",
       "agree_notice": "Vous devez accepter les conditions générales de vente pour pouvoir vérifier.",
       "empty": "Votre panier est vide.",
       "continue_browsing_html": "<a href=\"/collections/all\">Retourner au magasinage</a>.",
@@ -271,6 +288,12 @@
     }
   },
   "sections": {
+    "featured_product": {
+      "title": "Produit en vedette",
+      "gallery_thumbnail_alt": "Charger l'image dans la galerie, {{ imageAlt }}",
+      "video_thumbnail_alt": "Charger et lire la vidéo dans la visionneuse de la Galerie, {{ imageAlt }}",
+      "model_thumbnail_alt": "Charger le modèle 3D dans la Galerie, {{ imageAlt }}"
+    },
     "map": {
       "address_error": "Vous ne trouvez pas cette adresse",
       "address_no_results": "Aucun résultat pour cette adresse",
@@ -340,8 +363,24 @@
       "added_to_cart": "Ajouté au panier",
       "adding_to_cart": "Ajouter au panier",
       "preorder": "Pré-commander",
+      "savings": "Vous économisez",
       "color_option": "couleur",
-      "size_option": "taille, tailles"
+      "size_option": "taille, tailles",
+      "include_taxes": "Taxes incluses.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Frais d'expédition</a> calculés lors du passage à la caisse.",
+      "unit_price_label": "Prix unitaire",
+      "view_in_space": "Afficher dans votre espace",
+      "view_in_space_label": "Affichage dans votre espace, charge l'article dans une fenêtre de réalité augmentée"
+    }
+  },
+  "store_availability": {
+    "general": {
+      "view_store_info": "Afficher les informations de la boutique",
+      "check_other_stores": "Vérifier la disponibilité dans d'autres boutiques",
+      "pick_up_available": "Ramassage disponible",
+      "pick_up_currently_unavailable": "Ramassage actuellement indisponible",
+      "pick_up_available_at_html": "Ramassage disponible à <strong>{{ location_name }}</strong>",
+      "pick_up_unavailable_at_html": "Ramassage actuellement indisponible à <strong>{{ location_name }}</strong>"
     }
   },
   "gift_cards": {

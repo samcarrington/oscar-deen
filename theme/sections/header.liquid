@@ -1,3 +1,32 @@
+<style>
+  {% if section.settings.top_bar_full_width %}
+  header.util .wrapper {
+    padding: 0;
+    max-width: 100%;
+  }
+  header.util .wrapper .left-wrapper,
+  header.util .wrapper .right-wrapper {
+    margin: 6px 20px;
+  }
+  {% endif %}
+  .site-logo.has-image {
+    max-width: {{ section.settings.logo_max_width }}px;
+  }
+  header.site-header .layout-horizontal .logo-contain {
+    flex-basis: {{ section.settings.logo_max_width }}px;
+  }
+  {%- if section.settings.show_locale_selector == false -%}
+    header.util .selectors-form__item--locale {
+      display: none;
+    }
+  {%- endif -%}
+  {%- if section.settings.show_currency_selector == false -%}
+    header.util .selectors-form__item--currency {
+      display: none;
+    }
+  {%- endif -%}
+</style>
+
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
   <div class="site-header-wrapper">
     <header class="site-header {% if section.settings.minimal_padding == "minimal" %}minimal{% endif %} {% if section.settings.header_full_width %}full-width{% endif %}" data-scroll-lock="{{ section.settings.scroll_lock }}" role="banner">
@@ -10,30 +39,34 @@
           {% endcomment %}
           <div class="logo-contain">
             {% if template.name == 'index' %}
-              <h1 class="site-logo {% if section.settings.logo %}has-image{% endif %}" itemscope itemtype="http://schema.org/Organization">
+              <h1 class="site-logo {% if section.settings.logo %}has-image{% endif %}">
             {% else %}
-              <div class="site-logo {% if section.settings.logo %}has-image{% endif %}" itemscope itemtype="http://schema.org/Organization">
+              <div class="site-logo {% if section.settings.logo %}has-image{% endif %}">
             {% endif %}
               {% if section.settings.logo %}
-                <a href="{{ routes.root_url }}" itemprop="url" class="logo-image">
-                  {%- assign image = section.settings.logo -%}
-                  {%- assign image_default_width = section.settings.logo_max_width -%}
-                  {%- assign image_2x_width = image_default_width | times: 2 -%}
-                  {%- assign image_3x_width = image_default_width | times: 3 -%}
-                  {%- assign image_default = image_default_width | append: 'x' -%}
-                  {%- capture widths -%}{{ image_default_width }},{{ image_2x_width }},{{ image_3x_width }}{%- endcapture -%}
-                  {% assign image_widths = widths %}
-                  {% include 'theme-rias' %}
-                  <img id="{{ img_id }}" class="lazyload"
-                    src="{{ image | img_url: image_default }}"
-                    data-src="{{ image_url_pattern }}"
-                    data-widths="[{{ image_widths }}]"
-                    data-aspectratio="{{ image.aspect_ratio }}"
-                    data-sizes="auto"
-                    alt="{{ image.alt | escape | default: shop.name }}">
+                {%- assign image = section.settings.logo -%}
+                <a href="{{ routes.root_url }}" class="logo-image card__image-wrapper" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100 }}%">
+                    {%- assign image_default_width = section.settings.logo_max_width -%}
+                    {%- assign image_default = image_default_width | append: 'x' -%}
+                    {%- assign image_widths = '' -%}
+                    {%- for i in (1..3) -%}
+                      {%- assign width = image_default_width | times: i -%}
+                      {%- assign image_widths = image_widths | append: width -%}
+                      {%- unless forloop.last -%}
+                        {%- assign image_widths = image_widths | append: ',' -%}
+                      {%- endunless -%}
+                    {%- endfor -%}
+                    {% include 'theme-rias' %}
+                    <img class="card__image lazyload"
+                      src="{{ image | img_url: image_default }}"
+                      data-src="{{ image_url_pattern }}"
+                      data-widths="[{{ image_widths }}]"
+                      data-aspectratio="{{ image.aspect_ratio }}"
+                      data-sizes="auto"
+                      alt="{{ image.alt | escape | default: shop.name  }}">
                 </a>
               {% else %}
-                <a href="{{ routes.root_url }}" itemprop="url">{{ shop.name }}</a>
+                <a href="{{ routes.root_url }}">{{ shop.name }}</a>
               {% endif %}
             {% if template.name == 'index' %}
               </h1>
@@ -53,11 +86,9 @@
 </div>
 
 <nav id="menu" class="panel" role="navigation">
-  {% comment %}
   <div class="search">
     {% include 'search-bar' %}
   </div>
-  {% endcomment %}
 
   {% include 'site-nav' %}
 
@@ -68,36 +99,44 @@
   </div>
 </nav>
 
-<style>
-  {% if section.settings.top_bar_full_width %}
-  header.util .wrapper {
-    padding: 0;
-    max-width: 100%;
-  }
-  header.util .wrapper .left-wrapper,
-  header.util .wrapper .right-wrapper {
-    margin: 6px 20px;
-  }
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": {{ shop.name | json }},
+  {% if section.settings.logo %}
+    {%- assign image_size = section.settings.logo.width | append:'x' -%}
+    "logo": {{ section.settings.logo | img_url: image_size | prepend: "https:" | json }},
   {% endif %}
-  .site-logo.has-image {
-    max-width: {{ section.settings.logo_max_width }}px;
-  }
-  header.site-header .layout-horizontal .logo-contain {
-    flex-basis: {{ section.settings.logo_max_width }}px;
-  }
-  {%- if section.settings.logo -%}
-    {%- assign image = section.settings.logo -%}
-    {%- assign padding = 1 | divided_by: image.aspect_ratio | times: 100 | append: '%' -%}
-    header.site-header h1.site-logo.has-image a:before,
-    header.site-header .site-logo.has-image.h1 a:before,
-    header.site-header div.has-image.site-logo a:before {
-      padding-bottom: {{ padding }};
+  {%- capture same_as -%}
+    {%- assign social_links = 'Twitter,Facebook,Instagram,Pinterest,Tumblr,YouTube,Snapchat,Spotify,Google Plus,Medium,LinkedIn,Amazon' | split: ',' -%}
+    {%- for link in social_links -%}
+      {%- assign setting_val = 'social_' | append: link | append: '_link' | downcase -%}
+      {%- if settings[setting_val] != blank -%}{{ settings[setting_val] | json }},{%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- assign same_as_size = same_as | size | minus: 1 -%}
+  "sameAs": [ {{ same_as | slice: 0, same_as_size }} ],
+  "url": {{ shop.url | append: page.url | json }}
+}
+</script>
+
+{% if request.page_type == 'index' %}
+  {% assign potential_action_target = shop.url | append: routes.search_url | append: "?q={search_term_string}" %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ shop.url | append: page.url | json }}
     }
-  {%- endif -%}
-  #page #menu.panel ul.site-nav li {
-    text-transform: none;
-  }
-</style>
+  </script>
+{% endif %}
 
 {% schema %}
 {
@@ -174,6 +213,28 @@
       "id": "header_full_width",
       "label": "Expand header full width",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Language Selector",
+      "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_locale_selector",
+      "label": "Show language selector",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Currency Selector",
+      "info": "To add a currency, go to your [payment settings.](/admin/settings/payments)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency_selector",
+      "label": "Show currency selector",
+      "default": true
     }
   ]
 }

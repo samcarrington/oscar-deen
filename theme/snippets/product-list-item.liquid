@@ -30,7 +30,7 @@
   <figure>
     <div class="product-thumbnail">
       <a href="{{ product.url | within: collection }}"{% if product.images.size > 1 and settings.variant_rollover %} class="view-alt product-image lazyload" data-bgset="{% include 'bgset', image: product.images[1] %}"{% else %} class="product-image"{% endif %}>
-        {%- assign image = product.featured_image -%}
+        {%- assign image = product.featured_media.preview_image -%}
         <div class="card__image-wrapper" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%">
           {% assign image_widths = '120,240,394,590' %}
           {% include 'theme-rias' %}

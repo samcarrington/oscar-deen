@@ -1,5 +1,18 @@
 {
   "general": {
+    "accessibility": {
+      "skip_to_content": "Pular para o conteúdo",
+      "close_modal": "Fechar",
+      "link_messages": {
+        "new_window": "Abrirá numa nova janela.",
+        "external": "Abrirá uma página externa.",
+        "new_window_and_external": "Abrirá uma página externa numa nova janela."
+      },
+      "refresh_page": "Escolher uma seleção resulta em uma atualização de página inteira.",
+      "selection_help": "Pressione a tecla de espaço e as teclas de seta para fazer uma seleção.",
+      "unit_price_separator": "por",
+      "error": "Erro"
+    },
     "meta": {
       "tags": "Marcado \"{{ tags }}\"",
       "page": "Página {{ page }}"
@@ -78,6 +91,10 @@
       "currency_at_checkout_html": "Processo {{ shop_name }} todas as ordens em {{ shop_currency }}. Embora o conteúdo do seu carrinho está exibida atualmente em <span class=\"selected-currency\"></span>, você vai fazer o checkout usando {{ shop_currency }} à taxa de câmbio mais atual.",
       "update": "Atualizar Carrinho",
       "checkout": "Fechar pedido",
+      "taxes_and_shipping_at_checkout": "Impostos e frete calculados no checkout",
+      "taxes_and_shipping_policy_at_checkout_html": "Impostos e <a href=\"{{ link }}\">frete</a> calculados no checkout",
+      "taxes_included_but_shipping_at_checkout": "Imposto incluído e frete calculado no checkout",
+      "taxes_included_and_shipping_policy_html": "Taxas incluídas. <a href=\"{{ link }}\">Frete</a> calculado no checkout.",
       "agree_notice": "Você deve concordar com os termos e condições de vendas para check-out.",
       "empty": "Seu carrinho está vazio no momento.",
       "continue_browsing_html": "Continue navegando <a href=\"/collections/all\">aqui</a>.",
@@ -272,6 +289,12 @@
     }
   },
   "sections": {
+    "featured_product": {
+      "title": "Produto em destaque",
+      "gallery_thumbnail_alt": "Carregar imagem no visualizador da galeria, {{ imageAlt }}",
+      "video_thumbnail_alt": "Carregar e reproduzir vídeo no visualizador da galeria, {{ imageAlt }}",
+      "model_thumbnail_alt": "Carregar modelo 3D no visualizador da galeria, {{ imageAlt }}"
+    },
     "map": {
       "address_error": "Não é possível localizar o endereço",
       "address_no_results": "Nenhum resultado para este endereço",
@@ -341,8 +364,24 @@
       "added_to_cart": "Adicionado ao carrinho",
       "adding_to_cart": "Adicionar ao carrinho",
       "preorder": "Pedido antecipado",
+      "savings": "Você economiza",
       "color_option": "cor, colorido",
-      "size_option": "tamanho, tamanhos"
+      "size_option": "tamanho, tamanhos",
+      "include_taxes": "Taxas incluídas.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Frete</a> calculado no checkout.",
+      "unit_price_label": "Preço unitário",
+      "view_in_space": "Ver no seu espaço",
+      "view_in_space_label": "Ver em seu espaço, carregar item na janela de realidade aumentada"
+    }
+  },
+  "store_availability": {
+    "general": {
+      "view_store_info": "Ver as informações da loja",
+      "check_other_stores": "Verificar a disponibilidade em outras lojas",
+      "pick_up_available": "Retirada disponível",
+      "pick_up_currently_unavailable": "Retirada indisponível no momento",
+      "pick_up_available_at_html": "Retirada disponível em <strong>{{ location_name }}</strong>",
+      "pick_up_unavailable_at_html": "Retirada em <strong>{{ location_name }}</strong> indisponível no momento"
     }
   },
   "gift_cards": {

@@ -1,5 +1,18 @@
 {
   "general": {
+    "accessibility": {
+      "skip_to_content": "Direkt zum Inhalt",
+      "close_modal": "Schließen",
+      "link_messages": {
+        "new_window": "Öffnet ein neues Fenster.",
+        "external": "Öffnet externe Website.",
+        "new_window_and_external": "Öffnet externe Website in einem neuen Fenster."
+      },
+      "refresh_page": "Wenn Sie eine Auswahl auswählen, wird eine vollständige Seite aktualisiert.",
+      "selection_help": "Drücken Sie die Leertaste und dann die Pfeiltasten, um eine Auswahl zu treffen.",
+      "unit_price_separator": "pro",
+      "error": "Fehler"
+    },
     "meta": {
       "tags": "Getaggt \"{{ tags }}\"",
       "page": "Seite {{ page }}"
@@ -77,6 +90,10 @@
       "currency_at_checkout_html": "{{ shop_name }} verarbeiten alle Aufträge in {{ shop_currency }}. Während der Inhalt des Korbes zur Zeit in <span class=\"selected-currency\"></span> angezeigt wird, werden Sie auf dem aktuellen Wechselkurs {{ shop_currency }} Kasse.",
       "update": "Einkaufswagen aktualisieren",
       "checkout": "Zur Kasse",
+      "taxes_and_shipping_at_checkout": "Steuern und Versandkosten werden beim Checkout berechnet",
+      "taxes_and_shipping_policy_at_checkout_html": "zzgl. MwSt. und <a href=\"{{ link }}\">Versandkosten</a>",
+      "taxes_included_but_shipping_at_checkout": "inkl. MwSt.",
+      "taxes_included_and_shipping_policy_html": "inkl. MwSt. zzgl. <a href=\"{{ link }}\">Versandkosten</a>",
       "agree_notice": "Sie müssen sich mit den Verkaufsbedingungen einverstanden erklären.",
       "empty": "Ihr Einkaufswagen ist im Moment leer.",
       "continue_browsing_html": "Mit der Suche <a href=\"/collections/all\">hier</a> fortfahren.",
@@ -271,6 +288,12 @@
     }
   },
   "sections": {
+    "featured_product": {
+      "title": "Vorgestelltes Produkt",
+      "gallery_thumbnail_alt": "Laden Sie das Bild in den Galerie-Viewer, {{ imageAlt }}",
+      "video_thumbnail_alt": "Laden und Abspielen von Videos im Galerie-Viewer, {{ imageAlt }}",
+      "model_thumbnail_alt": "Laden Sie das 3D-Modell in den Galerie-Viewer, {{ imageAlt }}"
+    },
     "map": {
       "address_error": "Kann die Adresse nicht finden",
       "address_no_results": "Keine Ergebnisse für diese Adresse",
@@ -340,8 +363,24 @@
       "added_to_cart": "In den Einkaufswagen",
       "adding_to_cart": "Ihren Einkaufswagen einfügen",
       "preorder": "Vorbestellen",
+      "savings": "Sie sparen",
       "color_option": "farbe",
-      "size_option": "Größe, Größen, Format"
+      "size_option": "Größe, Größen, Format",
+      "include_taxes": "inkl. MwSt.",
+      "shipping_policy_html": "zzgl. <a href=\"{{ link }}\">Versandkosten</a>",
+      "unit_price_label": "Einzelpreis",
+      "view_in_space": "In Ihrem Bereich ansehen",
+      "view_in_space_label": "„Ansicht in Ihrem Raum“ lädt den Artikel im Augmented-Reality-Fenster"
+    }
+  },
+  "store_availability": {
+    "general": {
+      "view_store_info": "Shop-Informationen anzeigen",
+      "check_other_stores": "Verfügbarkeit in anderen Shops überprüfen",
+      "pick_up_available": "Abholung verfügbar",
+      "pick_up_currently_unavailable": "Abholung derzeit nicht verfügbar",
+      "pick_up_available_at_html": "Abholung bei <strong>{{ location_name }}</strong> verfügbar",
+      "pick_up_unavailable_at_html": "Abholung bei <strong>{{ location_name }}</strong> derzeit nicht verfügbar"
     }
   },
   "gift_cards": {

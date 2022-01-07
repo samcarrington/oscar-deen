@@ -1,8 +1,12 @@
-<div class="product-template" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-ProductSection data-section-type="product-template" data-enable-history-state="true" data-enable-swatch="{% if section.settings.variant_style == 'dropdowns' %}false{% else %}true{% endif %}">
-  <section class="single-product" itemscope itemtype="http://schema.org/Product">
-    <meta itemprop="name" content="{{ product.title }}{% unless product.has_only_default_variant %} - {{ current_variant.title }}{% endunless %}">
-    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
-    <meta itemprop="image" content="{{ product.featured_image.src | img_url: '1024x1024' }}">
+<div class="product-template" 
+  id="ProductSection-{{ section.id }}" 
+  data-section-id="{{ section.id }}" 
+  data-ProductSection 
+  data-section-type="product-template" 
+  data-enable-history-state="true" 
+  data-enable-swatch="{% if section.settings.variant_style == 'dropdowns' %}false{% else %}true{% endif %}"
+>
+  <section class="single-product">
     {% comment %}
       Get first variant, or deep linked one
     {% endcomment %}
@@ -10,10 +14,8 @@
     <div class="wrapper">
 
       <header class="content-util">
-      {% include 'breadcrumb' %}
-      {% comment %}
+        {% include 'breadcrumb' %}
         {% include 'social-icons' %}
-      {% endcomment %}
       </header>
 
       <header class="product-header">
@@ -55,7 +57,7 @@
             {%- comment -%}
               Create thumbnails if there is more than one product image
             {%- endcomment -%}
-            {%- unless product.images.size == 1 or section.settings.thumbnails_placement == 'hide' -%}
+            {%- unless product.media.size == 1 or section.settings.thumbnails_placement == 'hide' -%}
               {%- if section.settings.thumbnails_placement contains 'side' -%}
                 {% include 'product-thumbnails' %}
               {%- endif -%}
@@ -66,16 +68,17 @@
         </div>
 
         <aside class="product-aside">
-          <div class="purchase-box {% if section.settings.product_box_padding %}padding-box{% endif %}" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-            <meta itemprop="priceCurrency" content="{{ shop.currency }}">
-            <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
-
+          <div class="purchase-box {% if section.settings.product_box_padding %}padding-box{% endif %}">
             {% comment %}
               ID addToCartForm is a selector for the ajax cart plugin
             {% endcomment %}
-            <div id="AddToCartForm-{{ section.id }}" data-AddToCartForm class="form-vertical product-form product-form-{{ section.id }}" {% if section.settings.show_payment_button %}data-dynamic-checkout="true"{% endif %} data-section="{{ section.id }}">
+            <div id="AddToCartForm-{{ section.id }}" data-AddToCartForm class="form-vertical product-form product-form-{{ section.id }}" {% if section.settings.show_payment_button and product.selling_plan_groups.size == 0 %}data-dynamic-checkout="true"{% endif %} data-section="{{ section.id }}">
               {% include 'product-form' %}
             </div>
+
+            <div class="product-single__store-availability-container" data-store-availability-container>
+            </div>
+
           </div>
 
           {% if section.settings.trust_badge %}
@@ -102,7 +105,7 @@
             </style>
           {% endif %}
 
-          <div class="description rte" itemprop="description" data-tabs-enable="{{ section.settings.tabs_enable }}">
+          <div class="description rte" data-tabs-enable="{{ section.settings.tabs_enable }}">
             {%- assign description_parts = product.description | split: '<!-- split -->' -%}
             {%- assign description_first_part = description_parts | first -%}
             {%- if section.settings.tabs_enable -%}
@@ -235,6 +238,9 @@
   <script type="application/json" id="ProductJson-{{ section.id }}">
     {{ product | json }}
   </script>
+  <script type="application/json" id="ModelJson-{{ section.id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+  </script>
 {% endunless %}
 
 {%- if section.settings.size_guide_page != blank -%}
@@ -243,15 +249,86 @@
 </div>
 {%- endif -%}
 
+{% assign current_variant = product.selected_or_first_available_variant %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "url": {{ shop.url | append: product.url | json }},
+  {%- if product.featured_image -%}
+    {%- assign image_size = product.featured_media.preview_image.width | append: 'x' -%}
+    "image": [
+      {{ product.featured_media.preview_image | img_url: image_size | prepend: "https:" | json }}
+    ],
+  {%- endif -%}
+  "description": {{ product.description | strip_html | json }},
+  {%- if current_variant.sku != blank -%}
+    "sku": {{ current_variant.sku | json }},
+  {%- else -%}
+    "sku": {{ current_variant.id | json }},
+  {%- endif -%}
+  {%- if current_variant.barcode.size == 12 -%}
+    "gtin12": {{ current_variant.barcode | json }},
+  {%- endif -%}
+  {%- if current_variant.barcode.size == 13 -%}
+    "gtin13": {{ current_variant.barcode | json }},
+  {%- endif -%}
+  {%- if current_variant.barcode.size == 14 -%}
+    "gtin14": {{ current_variant.barcode | json }},
+  {%- endif -%}
+  "brand": {
+    "@type": "Thing",
+    "name": {{ product.vendor | json }}
+  },
+  "offers": [
+    {%- for variant in product.variants -%}
+      {
+        "@type" : "Offer",
+        "availability" : "http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+        "itemCondition" : "http://schema.org/NewCondition",
+        "price" : {{ variant.price | money_without_currency | json }},
+        "priceCurrency" : {{ cart.currency.iso_code | json }},
+        "url" : {{ shop.url | append: variant.url | json }},
+        {%- if variant.image -%}
+          {%- assign variant_image_size = variant.image.width | append: 'x' -%}
+          "image": {{ variant.image.src | img_url: variant_image_size | prepend: "https:" | json }},
+        {%- endif -%}
+        {%- if variant.title != 'Default Title' -%}
+          "name" : "{{ product.title | strip_html | escape }} - {{ variant.title | escape }}",
+        {%- else -%} 
+          "name" : {{ product.title | json }},
+        {%- endif -%}
+        {%- if variant.barcode.size == 12 -%}
+          "gtin12": {{ variant.barcode | json }},
+        {%- endif -%}
+        {%- if variant.barcode.size == 13 -%}
+          "gtin13": {{ variant.barcode | json }},
+        {%- endif -%}
+        {%- if variant.barcode.size == 14 -%}
+          "gtin14": {{ variant.barcode | json }},
+        {%- endif -%}
+        {%- if variant.sku != blank -%}
+          "sku": {{ variant.sku | json }},
+        {%- else -%}
+          "sku": {{ variant.id | json }},
+        {%- endif -%}
+        "priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' | uri_encode | replace:'+','%20' }}",
+        "seller": {
+          "@type": "Organization",
+          "name": {{ shop.name | json }}
+        }
+      }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+
 
 {% schema %}
 {
   "name": "Product pages",
   "settings": [
-    {
-      "type": "header",
-      "content": "Product form settings"
-    },
     {
       "type": "checkbox",
       "id": "show_vendors",
@@ -259,53 +336,10 @@
       "default": false
     },
     {
-      "type": "select",
-      "id": "variant_style",
-      "label": "Product variant style",
-      "options": [
-        {
-          "value": "dropdowns",
-          "label": "Dropdowns"
-        },
-        {
-          "value": "buttons",
-          "label": "Buttons"
-        },
-        {
-          "value": "swatches",
-          "label": "Swatches"
-        }
-      ],
-      "default": "dropdowns"
-    },
-    {
       "type": "checkbox",
-      "id": "variant_swatch_images",
-      "label": "Show swatch images",
-      "info": "Upload custom swatch images. [Learn more](https://help.stylehatch.com/article/335-product-color-swatches)",
+      "id": "show_savings",
+      "label": "Show savings",
       "default": false
-    },
-    {
-      "type": "select",
-      "id": "variant_swatch_shape",
-      "label": "Swatch shape",
-      "options": [
-        {
-          "value": "circle",
-          "label": "Circle"
-        },
-        {
-          "value": "square",
-          "label": "Square"
-        }
-      ],
-      "default": "circle"
-    },
-    {
-      "type": "checkbox",
-      "id": "variant_swatch_soldout",
-      "label": "Disable sold out swatches",
-      "default": true
     },
     {
       "type": "page",
@@ -333,12 +367,66 @@
     },
     {
       "type": "header",
-      "content": "Image settings"
+      "content": "Swatches"
+    },
+    {
+      "type": "select",
+      "id": "variant_style",
+      "label": "Product variant style",
+      "options": [
+        {
+          "value": "dropdowns",
+          "label": "Dropdowns"
+        },
+        {
+          "value": "buttons",
+          "label": "Buttons"
+        },
+        {
+          "value": "swatches",
+          "label": "Swatches"
+        }
+      ],
+      "default": "dropdowns"
+    },
+    {
+      "type": "checkbox",
+      "id": "variant_swatch_images",
+      "label": "Show swatch images",
+      "info": "Use custom swatch images instead of solid colors. [Learn more](https://help.stylehatch.com/article/335-product-color-swatches)",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "variant_swatch_shape",
+      "label": "Swatch shape",
+      "options": [
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "circle"
+    },
+    {
+      "type": "checkbox",
+      "id": "variant_swatch_soldout",
+      "label": "Disable sold out swatches",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Media",
+      "info": "Learn more about [media types](https://help.shopify.com/manual/products/product-media)"
     },
     {
       "type": "checkbox",
       "id": "enable_image_slider",
-      "label": "Enable image slider",
+      "label": "Enable media slider",
       "default": true
     },
     {
@@ -375,7 +463,7 @@
           "label": "Hide"
         }
       ],
-      "default": "side"
+      "default": "below"
     },
     {
       "type": "checkbox",
@@ -393,7 +481,13 @@
       "type": "checkbox",
       "id": "product_featured_lightbox_enable",
       "label": "Enable lightbox",
-      "default": true
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label": "Enable video looping",
+      "default": false
     },
     {
       "type": "header",

@@ -5,6 +5,7 @@
     {% endcomment %}
     {% if block.type == 'announcement-bar' %}
       {%- if block.settings.show_announcement_bar -%}
+        {%- assign show_announcement_bar = false -%}
         {%- if block.settings.homepage_limit -%}
           {%- if template.name == 'index' -%}
             {%- assign show_announcement_bar = true -%}

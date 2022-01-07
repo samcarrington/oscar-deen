@@ -8,30 +8,89 @@
   <link rel="canonical" href="{{ canonical_url }}">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="{{ settings.primary_accent_color }}">
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+  <link rel="preconnect" href="https://monorail-edge.shopifysvc.com">
 
-  {% if settings.favicon != blank %}
+  {%- liquid 
+    assign body_font = settings.typography_body_font
+    assign body_font_bold = body_font | font_modify: 'weight', 'bolder'
+    assign body_font_italic = body_font | font_modify: 'style', 'italic'
+    assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+
+    assign headings_font = settings.typography_headings_font
+    if settings.typography_headings_bold
+      assign headings_font_bold = headings_font | font_modify: 'weight', 'bolder'
+    endif
+
+    assign navigation_font = settings.typography_navigation_font
+    assign navigation_font_bold = navigation_font | font_modify: 'weight', 'bolder'
+  -%}
+
+  <link rel="preload" href="{{ 'theme.scss.css' | asset_url }}" as="style">
+  <link rel="preload" as="font" href="{{ body_font | font_url }}" type="font/woff2" crossorigin>
+  {%- if body_font_bold -%}
+    <link rel="preload" as="font" href="{{ body_font_bold | font_url }}" type="font/woff2" crossorigin>
+  {%- endif -%}
+  <link rel="preload" as="font" href="{{ headings_font | font_url }}" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="{{ navigation_font | font_url }}" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ 'vendor.js' | asset_url }}" as="script">
+  <link rel="preload" href="{{ 'theme.js' | asset_url }}" as="script">
+  <link rel="preload" href="{{ 'lazysizes.js' | asset_url }}" as="script">
+
+  <style>
+    {{ body_font | font_face: font_display: 'swap' }}
+    {%- if body_font_bold -%}
+      {{ body_font_bold | font_face: font_display: 'swap' }}
+    {%- endif -%}
+    {%- if body_font_italic -%}
+      {{ body_font_italic | font_face: font_display: 'swap' }}
+    {%- endif -%}
+    {%- if body_font_bold_italic -%}
+      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+    {%- endif -%}
+
+    {{ headings_font | font_face: font_display: 'swap' }}
+    {%- if headings_font_bold %}
+      {{ headings_font_bold | font_face: font_display: 'swap' }}
+    {%- endif -%}
+
+    {{ navigation_font | font_face: font_display: 'swap' }}
+    {%- if navigation_font_bold -%}
+      {{ navigation_font_bold | font_face: font_display: 'swap' }}
+    {%- endif -%}
+  </style>
+
+
+  {%- if settings.favicon != blank -%}
   <link rel="apple-touch-icon" sizes="180x180" href="{{ settings.favicon | img_url: '180x180' }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ settings.favicon | img_url: '32x32' }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ settings.favicon | img_url: '16x16' }}">
   <link rel="mask-icon" color="{{ settings.primary_accent_color }}">
-  {% endif %}
+  {%- endif -%}
 
   <title>
     {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
   </title>
 
-  {% if page_description %}
+  {%- if page_description -%}
     <meta name="description" content="{{ page_description | escape }}">
-  {% endif %}
+  {%- endif -%}
 
-  {% include 'social-meta-tags' %}
+  {%- include 'social-meta-tags' -%}
+  {% include 'css-variables' %}
+  {{- 'theme.scss.css' | asset_url | stylesheet_tag -}}
 
-  {{ content_for_header }}
-  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  <script type="text/javascript">
+    window.lazySizesConfig = window.lazySizesConfig || {};
+    window.lazySizesConfig.loadMode = 1;
+  </script>
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'lazysizes.js' | asset_url }}" async="async"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'lazysizes.js' | asset_url }}"></script><![endif]-->
 
-  {% if template contains 'customers' %}
+  {%- if template contains 'customers' -%}
     {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
-  {% endif %}
+  {%- endif -%}
 
   <script>
     window.StyleHatch = window.StyleHatch || {};
@@ -53,44 +112,36 @@
       cart_url: '{{ routes.cart_url }}',
       cart_add_url: '{{ routes.cart_add_url }}',
       cart_change_url: '{{ routes.cart_change_url }}',
-      cart_clear_url: '{{ routes.cart_clear_url }}'
+      cart_clear_url: '{{ routes.cart_clear_url }}',
+      product_recommendations_url: '{{ routes.product_recommendations_url }}'
     };
     // Post defer
     window.addEventListener('DOMContentLoaded', function() {
       (function( $ ) {
-      {% comment %}
-        Add JavaScript fuctionality that relies on jQuery here
+      {%- comment -%}
+        Add JavaScript functionality that relies on jQuery here
         this will allow jQuery to properly load before the calls are made
-      {% endcomment %}
+      {%- endcomment -%}
 
-      {% if newHash %}
+      {%- if newHash -%}
         $(function() {
           StyleHatch.updateHash('{{ newHash }}');
         });
-      {% endif %}
-      {% if resetPassword %}
+      {%- endif -%}
+      {%- if resetPassword -%}
         $(function() {
           StyleHatch.resetPasswordSuccess();
         });
-      {% endif %}
+      {%- endif -%}
       })(jq223);
     });
     document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
   </script>
-  <script type="text/javascript">
-    window.lazySizesConfig = window.lazySizesConfig || {};
-    window.lazySizesConfig.loadMode = 1;
-  </script>
-  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script><!--<![endif]-->
-  <!--[if lte IE 9]><script src="{{ 'lazysizes.min.js' | asset_url }}"></script><![endif]-->
   <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
   <!--[if lte IE 9]><script src="{{ 'vendor.js' | asset_url }}"></script><![endif]-->
-  {% if settings.show_multiple_currencies and shop.enabled_currencies.size == 1 %}
-    {% include 'currencies' %}
-  {% endif %}
-  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme.min.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
-  <!--[if lte IE 9]><script src="{{ 'theme.min.js' | asset_url }}"></script><![endif]-->
-
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
+  {{ content_for_header }}
 </head>
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" data-template-directory="{{ template.directory }}" data-template="{{ template.name }}" >
@@ -107,6 +158,6 @@
     {% section 'footer' %}
   </div>
   
-  <!-- District v3.5.2 -->
+  <!-- District v3.10.2 -->
 </body>
 </html>

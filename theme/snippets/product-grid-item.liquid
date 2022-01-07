@@ -29,7 +29,7 @@
   {%- endcomment -%}
   {% capture img_id %}ProductGridImage-{{ section.id }}-{{ collection.id }}-{{ product.id }}{% endcapture %}
   {% capture wrapper_id %}ProductGridImageWrapper-{{ section.id }}-{{ collection.id }}-{{ product.id }}{% endcapture %}
-  {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+  {%- assign img_url = product.featured_media.preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
   {%- comment %}
   	Auto-crop
     - Square
@@ -38,7 +38,7 @@
   {% endcomment -%}
   <figure class="product-grid-item--{{ settings.collections_text_alignment }}">
     <a id="{{ wrapper_id }}" href="{{ product.url | within: collection }}" class="product_card">
-      {%- assign image = product.featured_image -%}
+      {%- assign image = product.featured_media.preview_image -%}
       <div class="product_card__image-wrapper" data-bgset="{% include 'bgset', image: image %}">
         {% assign image_widths = '295,394,590,700,800,1000,1200,1500,1800,2000,2400' %}
         {% include 'theme-rias' %}
@@ -65,7 +65,7 @@
           </style>
         {%- endif -%}
         {%- if settings.variant_rollover == true and product.images.size > 1 -%}
-          {%- assign image = product.images[1] -%}
+          {%- assign image = product.media[1].preview_image -%}
           {%- assign image_widths = '295,394,590,700,800,1000,1200,1500,1800,2000,2400' -%}
           {% include 'theme-rias' %}
           <img id="{{ img_id }}" class="product_card__image alt lazyload"
@@ -122,21 +122,49 @@
           <span class="vendor">{{ product.vendor | link_to_vendor }}</span>
         {% endif %}
       </div>
-      <span class="price">
-      {% if on_sale %}
-        {% if product.price_varies %}
-          <span class="from">{{ 'products.general.from' | t }}</span>
-          <span class="money">{{ product.price | money }}</span>
-          <span class="original-price money">{{ product.compare_at_price | money }}</span>
+      {% assign current_variant = product.selected_or_first_available_variant %}
+      <span class="price
+        {% if current_variant.available and current_variant.unit_price_measurement %} price--unit-available {% endif %}
+        {% if current_variant.available == false %} price--sold-out {% endif %}
+        {% if current_variant.available and current_variant.compare_at_price > current_variant.price %} price--on-sale {% endif %}">
+        {% if on_sale %}
+          {% if product.price_varies %}
+            <span class="from">{{ 'products.general.from' | t }}</span>
+            <span class="money">{{ product.price | money }}</span>
+            <span class="original-price money">{{ product.compare_at_price | money }}</span>
+          {% else %}
+            <span class="money">{{ product.price | money }}</span>
+            <span class="original-price money">{{ product.compare_at_price | money }}</span>
+          {% endif %}
         {% else %}
+          {% if product.price_varies %}<span class="from">{{ 'products.general.from' | t }}</span>{% endif %}
           <span class="money">{{ product.price | money }}</span>
-          <span class="original-price money">{{ product.compare_at_price | money }}</span>
         {% endif %}
-      {% else %}
-        {% if product.price_varies %}<span class="from">{{ 'products.general.from' | t }}</span>{% endif %}
-        <span class="money">{{ product.price | money }}</span>
-      {% endif %}
+
+        <div class="price__unit">
+          <dt>
+            <span class="visually-hidden">{{ 'products.product.unit_price_label' | t }}</span>
+          </dt>
+          <dd class="price-unit-price">
+            {%- capture unit_price_separator -%}
+              <span aria-hidden="true">/</span><span class="visually-hidden">{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
+            {%- endcapture -%}
+            {%- capture unit_price_base_unit -%}
+              <span data-unit-price-base-unit>
+                {%- if current_variant.available and current_variant.unit_price_measurement -%}
+                  {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+                    {{- current_variant.unit_price_measurement.reference_value -}}
+                  {%- endif -%}
+                  {{ current_variant.unit_price_measurement.reference_unit }}
+                {%- endif -%}
+              </span>
+            {%- endcapture -%}
+
+            <span data-unit-price>{{ current_variant.unit_price | money }}</span>{{- unit_price_separator -}}{{- unit_price_base_unit -}}
+          </dd>
+        </div>
       </span>
+      
     </figcaption>
 
     {%- if settings.collection_swatches -%}

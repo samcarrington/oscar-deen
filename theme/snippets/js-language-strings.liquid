@@ -10,7 +10,11 @@
       addressNoResults: {{ 'sections.map.address_no_results' | t | json }},
       addressQueryLimit: {{ 'sections.map.address_query_limit_html' | t | json }},
       authError: {{ 'sections.map.auth_error_html' | t | json }},
-      agreeNotice: {{ 'cart.general.agree_notice' | t | json }}
+      agreeNotice: {{ 'cart.general.agree_notice' | t | json }},
+      unitPrice: {{ 'products.product.unit_price_label' | t | json }},
+      unitPriceSeparator: {{ 'general.accessibility.unit_price_separator' | t | json }}
     }
+    window.theme = window.theme || {};
+    window.theme.info = { name: "District" };
 {%- endcapture -%}
 {{ js_language_strings }}

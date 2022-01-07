@@ -66,6 +66,7 @@
 <style>
   #shopify-section-{{ section.id }} .box figcaption h4 {
     color: {{ section.settings.color_overlay_text }};
+    border-color: {{ section.settings.color_overlay_text }};
   }
   {% assign overlay_alpha = section.settings.color_overlay_alpha_range | times: 0.01 %}
   #shopify-section-{{ section.id }} .box a figure:after,

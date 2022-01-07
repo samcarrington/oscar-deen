@@ -45,7 +45,30 @@
                           {%- unless line_item.product.has_only_default_variant -%}
                             <span class="variant" data-cart-item-variant-title>{{ line_item.variant.title }}</span>
                           {%- endunless -%}
-
+                          {% unless line_item.selling_plan_allocation == nil and property_size == 0 %}
+                            <div class="item-props">
+                              {% unless line_item.selling_plan_allocation == nil  %}
+                                <span class="item-props__property">
+                                  {{ line_item.selling_plan_allocation.selling_plan.name }}
+                                </span>
+                              {% endunless %}
+                              {% if property_size != 0 %}
+                                {% for property in line_item.properties %}
+                                  {% assign property_first_char = property.first | slice: 0 %}
+                                  {% if property.last != blank and property_first_char != '_' %}
+                                    <span class="item-props__property">
+                                      {{ property.first }}:&nbsp;
+                                      {%- if property.last contains '/uploads/' -%}
+                                        <a href="{{ property.last }}">{{ property.last | split: '/' | last }}</a>
+                                      {%- else -%}
+                                        {{ property.last }}
+                                      {%- endif -%}
+                                    </span>
+                                  {% endif %}
+                                {% endfor %}
+                              {% endif %}
+                            </div>
+                          {% endunless %}
 
                           {% if line_item.fulfillment %}
                             <div class="note">
@@ -74,6 +97,28 @@
                             {% endfor %}
                             </ul>
                           {% endif %}
+
+                          {%- if line_item.unit_price_measurement -%}
+                            <dt>
+                              <span class="visually-hidden">{{ 'products.product.unit_price_label' | t }}</span>
+                            </dt>
+                            <dd>
+                              <span class="price-unit-price">
+                                {%- capture unit_price_separator -%}
+                                  <span aria-hidden="true">/</span><span class="visually-hidden">{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
+                                {%- endcapture -%}
+                                {%- capture unit_price_base_unit -%}
+                                  {%- if line_item.unit_price_measurement.reference_value != 1 -%}
+                                    {{- line_item.unit_price_measurement.reference_value -}}
+                                  {%- endif -%}
+                                  {{ line_item.unit_price_measurement.reference_unit }}
+                                {%- endcapture -%}
+
+                                <span data-unit-price>{{ line_item.unit_price | money }}</span>{{- unit_price_separator -}}{{- unit_price_base_unit -}}
+                              </span>
+                            </dd>
+                          {%- endif -%}
+
                         </td>
                         <td data-label="{{ 'customer.order.quantity' | t }}">{{ line_item.quantity }}</td>
                         <td data-label="{{ 'customer.order.total' | t }}" class="text-right">

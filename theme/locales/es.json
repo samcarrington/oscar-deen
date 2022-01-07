@@ -1,5 +1,18 @@
 {
   "general": {
+    "accessibility": {
+      "skip_to_content": "Ir directamente al contenido",
+      "close_modal": "Cerrar",
+      "link_messages": {
+        "new_window": "Abre en una nueva ventana.",
+        "external": "Abre sitio externo.",
+        "new_window_and_external": "Abre sitio externo externo en una nueva ventana."
+      },
+      "refresh_page": "Al seleccionar una opción se actualiza toda la página.",
+      "selection_help": "Presiona la tecla de espacio y luego las teclas de flecha para seleccionar una opción.",
+      "unit_price_separator": "por",
+      "error": "Error"
+    },
     "meta": {
       "tags": "Etiquetado \"{{ tags }}\"",
       "page": "Página {{ page }}"
@@ -77,6 +90,10 @@
       "currency_at_checkout_html": "{{ shop_name }} proceso de todos los pedidos en {{ shop_currency }}. Aunque el contenido de su carrito se muestra actualmente en <span class=\"selected-currency\"></span>, se le pago y envío {{ shop_currency }} al tipo de cambio más reciente.",
       "update": "Actualizar carrito",
       "checkout": "Finalizar pedido",
+      "taxes_and_shipping_at_checkout": "Los impuestos y gastos de envío se calculan en la pantalla de pagos",
+      "taxes_and_shipping_policy_at_checkout_html": "Los impuestos y <a href=\"{{ link }}\">gastos de envío</a> se calculan en la pantalla de pagos",
+      "taxes_included_but_shipping_at_checkout": "En la pantalla de pagos se incluye el impuesto y se calculan los gastos de envío",
+      "taxes_included_and_shipping_policy_html": "Impuesto incluido. Los <a href=\"{{ link }}\">gastos de envío</a> se calculan en la pantalla de pagos.",
       "agree_notice": "Usted debe estar de acuerdo con los términos y condiciones de ventas para verificar.",
       "empty": "Su carrito actualmente está vacío.",
       "continue_browsing_html": "Continúe explorando <a href=\"/collections/all\">aquí</a>.",
@@ -272,6 +289,12 @@
     }
   },
   "sections": {
+    "featured_product": {
+      "title": "Producto destacado",
+      "gallery_thumbnail_alt": "Cargar imagen en el visor de la galería, {{ imageAlt }}",
+      "video_thumbnail_alt": "Cargar y reproducir el video en el visor de la galería, {{ imageAlt }}",
+      "model_thumbnail_alt": "Cargar modelo 3D en el visor de la galería, {{ imageAlt }}"
+    },
     "map": {
       "address_error": "No se puede encontrar esa dirección",
       "address_no_results": "No results for that address",
@@ -341,8 +364,24 @@
       "added_to_cart": "Añadir al carrito",
       "adding_to_cart": "Añadir al carrito",
       "preorder": "Hacer un pedido",
+      "savings": "Ahorras",
       "color_option": "color",
-      "size_option": "tamaño, tamaños, talla"
+      "size_option": "tamaño, tamaños, talla",
+      "include_taxes": "Impuesto incluido.",
+      "shipping_policy_html": "Los <a href=\"{{ link }}\">gastos de envío</a> se calculan en la pantalla de pagos.",
+      "unit_price_label": "Precio unitario",
+      "view_in_space": "Ver en tu espacio",
+      "view_in_space_label": "Ver en tu espacio, carga el artículo en la ventana de realidad aumentada"
+    }
+  },
+  "store_availability": {
+    "general": {
+      "view_store_info": "Ver información de la tienda",
+      "check_other_stores": "Verificar disponibilidad en otras tiendas",
+      "pick_up_available": "Retiro disponible",
+      "pick_up_currently_unavailable": "Retiro no disponible actualmente",
+      "pick_up_available_at_html": "Retiro disponible en <strong>{{ location_name }}</strong>",
+      "pick_up_unavailable_at_html": "Retiro no disponible actualmente en <strong>{{ location_name }}</strong>"
     }
   },
   "gift_cards": {

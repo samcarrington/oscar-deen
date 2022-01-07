@@ -61,7 +61,7 @@
               {%- endunless -%}
               {%- capture categories -%}{%- unless categories == blank  -%}{{ categories }}|{%- endunless -%}{{ cat_tag | split: '_' | first }}{%- endcapture -%}
             {%- endfor -%}
-            {%- assign cat_array = categories | downcase | split: '|' | uniq -%}
+            {%- assign cat_array = categories | split: '|' | uniq -%}
           {%- endif -%}
 
           {%- comment -%}
@@ -76,7 +76,7 @@
                   Loop through collection tags
                 {%- endcomment -%}
                 {%- for tag in collection.all_tags -%}
-                  {%- assign cat_tag = tag | downcase -%}
+                  {%- assign cat_tag = tag -%}
                   {%- unless cat_tag contains '_' -%}
                     {%- assign cat_tag = cat_tag | prepend: default_cat_title -%}
                   {%- endunless -%}
@@ -88,7 +88,7 @@
                     {%- if current_tags contains tag -%}
                       <li class="active close advanced-filter" data-group="{{ cat_item }}" data-handle="{{ tag | handle }}">{{ cat_tag | remove_first: cat_item | remove_first: '_' | link_to_remove_tag: tag }}</li>
                     {%- else -%}
-                      <li class="advanced-filter" data-group="{{ cat_item }}" data-handle="{{ tag | handle }}">{{ cat_tag | remove_first: cat_item | remove_first: '_' | link_to_add_tag: tag }}</li>
+                      <li class="advanced-filter" data-group="{{ cat_item }}" data-handle="{{ tag | handle }}">{{ tag | remove_first: cat_item | remove_first: '_' | link_to_add_tag: tag }}</li>
                     {%- endif -%}
                   {%- endif -%}
                 {%- endfor -%}

@@ -12,7 +12,7 @@
   {% if collection.image %}
     {%- assign image = collection.image -%}
   {% elsif collection.products.first %}
-    {%- assign image = collection.products.first.featured_image -%}
+    {%- assign image = collection.products.first.featured_media.preview_image -%}
   {% endif %}
 {% endif %}
 <div class="box">

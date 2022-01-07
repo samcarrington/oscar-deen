@@ -12,7 +12,7 @@
       </header>
       {% if cart.item_count > 0 %}
         <div class="cart-list">
-          <form action="/cart" method="post" novalidate class="cart-form">
+          <form action="{{ routes.cart_url }}" method="post" novalidate class="cart-form">
             <div class="cart-items">
               <div class="label-row">
                 <div class="grid">
@@ -69,6 +69,13 @@
                         {%- unless item.product.has_only_default_variant -%}
                           <span class="variant" data-cart-item-variant-title>{{ item.variant.title }}</span>
                         {%- endunless -%}
+
+                        <div class="cart-item-selling-plan-name
+                          {% if item.selling_plan_allocation == empty %} visually-hidden {% endif %}"
+                          data-cart-item-selling-plan-name
+                        >
+                          {{ item.selling_plan_allocation.selling_plan.name }}
+                        </div>
                         {%- comment -%}
                           Optional, loop through custom product line items if available
                           For more info on line item properties, visit:
@@ -76,12 +83,15 @@
                         {%- endcomment -%}
                         {%- unless item.properties == empty -%}
                           {%- for property in item.properties -%}
+                            {%- assign property_first_char = property.first | slice: 0 -%}
                             {%- unless property.last == blank -%}
-                              {{ property.first }}: {% if property.last contains '/uploads/' %}
-                                <a href="{{ property.last }}">{{ property.last | split: '/' | last }}</a>
-                              {% else %}
-                                {{ property.last }}
-                              {% endif %}<br>
+                              <div {% if property_first_char == '_' %}class="visually-hidden"{% endif %} data-cart-item-property>
+                                {{ property.first }}: {% if property.last contains '/uploads/' %}
+                                  <a href="{{ property.last }}">{{ property.last | split: '/' | last }}</a>
+                                {% else %}
+                                  {{ property.last }}
+                                {% endif %}
+                              </div>
                             {%- endunless -%}
                           {%- endfor -%}
                         {%- endunless -%}
@@ -103,6 +113,30 @@
                         {% endfor %}
                         </ul>
                       {% endif %}
+
+                      {%- comment -%}
+                        Markup template for unit price
+                      {%- endcomment -%}
+                      <div {% unless item.unit_price_measurement %}class="hide" {% endunless %}data-unit-price-group>
+                        <dt>
+                          <span class="visually-hidden visually-hidden--inline">{{ 'products.product.unit_price_label' | t }}</span>
+                        </dt>
+                        <dd>
+                          <span class="price-unit-price">
+                            {%- capture unit_price_separator -%}
+                              <span aria-hidden="true">/</span><span class="visually-hidden">{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
+                            {%- endcapture -%}
+                            {%- capture unit_price_base_unit -%}
+                              {%- if item.unit_price_measurement.reference_value != 1 -%}
+                                {{- item.unit_price_measurement.reference_value -}}
+                              {%- endif -%}
+                              {{ item.unit_price_measurement.reference_unit }}
+                            {%- endcapture -%}
+
+                            <span data-unit-price>{{ item.unit_price | money }}</span>{{- unit_price_separator -}}<span data-unit-price-base-unit>{{- unit_price_base_unit -}}</span>
+                          </span>
+                        </dd>
+                      </div>
                     </div>
                     {%- comment -%}
                       Cart item - quanity
@@ -165,13 +199,20 @@
                   <span class="label">{{ 'cart.general.subtotal' | t }}</span>
                   <span class="price money" data-cart-subtotal>{{ cart.total_price | money }}</span>
                 </p>
-                {% unless shop.enabled_currencies.size > 1 %}
-                  <p class="shipping-at-checkout"><em>{{ 'cart.general.shipping_at_checkout' | t }}</em></p>
-                {% endunless %}
-                {% if settings.show_multiple_currencies %}
-                {% assign default_currency = settings.default_currency | default: shop.currency | strip | upcase %}
-                <p class="currency-at-checkout" {%if default_currency == shop.currency %}style="display:none;"{% endif %}><em>{{ 'cart.general.currency_at_checkout_html' | t: shop_name: shop.name, shop_currency: shop.currency }}</em></p>
-                {% endif %}
+
+                {%- capture taxes_shipping_checkout -%}
+                  {%- if shop.taxes_included and shop.shipping_policy.body != blank -%}
+                    {{ 'cart.general.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                  {%- elsif shop.taxes_included -%}
+                    {{ 'cart.general.taxes_included_but_shipping_at_checkout' | t }}
+                  {%- elsif shop.shipping_policy.body != blank -%}
+                    {{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                  {%- else -%}
+                    {{ 'cart.general.taxes_and_shipping_at_checkout' | t }}
+                  {%- endif -%}
+                {%- endcapture -%}
+                <div class="cart__shipping rte">{{ taxes_shipping_checkout }}</div>
+
                 {%- if section.settings.terms_and_conditions -%}
                   <div class="terms-and-conditions rte">
                     <input style="float:none; vertical-align: middle;" type="checkbox" id="terms-and-conditions__agree" />

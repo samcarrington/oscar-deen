@@ -8,8 +8,8 @@
 {%- comment -%}
   Default Open Graph image
 {%- endcomment -%}
-{%- if settings.default_opengraph_image -%}
-  {%- assign og_image = settings.default_opengraph_image -%}
+{%- if page_image -%}
+  {%- assign og_image = page_image -%}
   {%- assign og_image_ratio = og_image.aspect_ratio -%}
   {%- if og_image_ratio > 1 -%}
     {%- assign og_image_width = og_image.width | at_most: og_default_at_most -%}
@@ -128,9 +128,9 @@
   {%- endif -%}
   <meta property="product:availability" content="{{ og_product_availability }}">
   <meta property="product:price:amount" content="{{ product.price | money_without_currency | strip_html }}">
-  <meta property="product:price:currency" content="{{ shop.currency }}">
+  <meta property="product:price:currency" content="{{ cart.currency.iso_code }}">
 {%- endif -%}
-{{ og_image_tags }}
+{{- og_image_tags -}}
 
 <meta name="twitter:site" content="{{ settings.social_twitter_link | split: 'twitter.com/' | last | prepend: '@' }}">
 <meta name="twitter:card" content="summary_large_image">
