@@ -38,8 +38,13 @@
           {% unless collection.handle == 'frontpage' %}
             <div class="collection-container">
               <header>
-                <h4>{{ collection.title }}</h4>
-                <a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>
+                <h4 class="inv">{{ collection.title }}</h4>
+                {% comment %}<a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>{% endcomment %}
+                {% if collection.description != blank %}
+                  <div class="description rte">
+                    {{ collection.description }}
+                  </div>
+                {% endif %}
               </header>
 
               <div class="product-container">
@@ -59,8 +64,17 @@
           {%- assign collection = collections[block.settings.collection] -%}
           <div class="collection-container">
             <header>
-              <h4>{{ collection.title }}</h4>
-              <a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>
+              <h4 class="inv">{{ collection.title }}</h4>
+              {% comment %}<a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>{% endcomment %}
+              {% if collection.description != blank %}
+                <div class="description rte">
+                  {{ collection.description }}
+                </div>
+              {% endif %}
+              <div>
+                {% for product in collection.products %}
+                  
+                {% endfor %}
             </header>
 
             <div class="product-container">

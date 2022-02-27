@@ -19,7 +19,7 @@
     },
     "404": {
       "title": "404 Página Não Encontrada",
-      "subtext_html": "A página que solicitou não existe. Clique <a href=\"/collections/all\">aqui</a> para continuar as suas compras."
+      "subtext_html": "A página que solicitou não existe. Clique <a href=\"\/collections\/all\">aqui<\/a> para continuar as suas compras."
     },
     "breadcrumbs": {
       "home": "Início",
@@ -43,7 +43,7 @@
       "close": "Fechar"
     },
     "other": {
-      "theme_credit_html": "Tema desenhado por <a href=\"http://www.stylehatch.com\">Style Hatch</a> |"
+      "theme_credit_html": "Tema desenhado por <a href=\"http:\/\/www.stylehatch.com\">Style Hatch<\/a> |"
     }
   },
   "blogs": {
@@ -87,20 +87,20 @@
       "note": "Instruções especiais para o vendedor",
       "subtotal": "Subtotal",
       "shipping_at_checkout": "Envios e descontos calculados no checkout",
-      "currency_at_checkout_html": "Processo {{ shop_name }} todas as ordens em {{ shop_currency }}. Embora o conteúdo do seu carrinho está exibida atualmente em <span class=\"selected-currency\"></span>, você vai fazer o checkout usando {{ shop_currency }} à taxa de câmbio mais atual.",
+      "currency_at_checkout_html": "Processo {{ shop_name }} todas as ordens em {{ shop_currency }}. Embora o conteúdo do seu carrinho está exibida atualmente em <span class=\"selected-currency\"><\/span>, você vai fazer o checkout usando {{ shop_currency }} à taxa de câmbio mais atual.",
       "update": "Atualizar Carrinho de Compras",
       "checkout": "Check-Out",
       "taxes_and_shipping_at_checkout": "Impostos e frete calculados no checkout",
-      "taxes_and_shipping_policy_at_checkout_html": "Impostos e <a href=\"{{ link }}\">frete</a> calculados no checkout",
+      "taxes_and_shipping_policy_at_checkout_html": "Impostos e <a href=\"{{ link }}\">frete<\/a> calculados no checkout",
       "taxes_included_but_shipping_at_checkout": "Imposto incluído e frete calculado no checkout",
-      "taxes_included_and_shipping_policy_html": "Taxas incluídas. <a href=\"{{ link }}\">Frete</a> calculado no checkout.",
+      "taxes_included_and_shipping_policy_html": "Taxas incluídas. <a href=\"{{ link }}\">Frete<\/a> calculado no checkout.",
       "agree_notice": "Você deve concordar com os termos e condições de vendas para check-out.",
       "empty": "O seu carrinho de compras está neste momento vazio.",
-      "continue_browsing_html": "Continue a ver <a href=\"/collections/all\">aqui</a>.",
+      "continue_browsing_html": "Continue a ver <a href=\"\/collections\/all\">aqui<\/a>.",
       "close_cart": "Fechar Carrinho de Compras",
       "continue_shoping": "Continue Comprando",
-      "item_in_cart_html": "Você tem <span class=\"item-count\">1</span> item em seu carrinho",
-      "items_in_cart_html": "Você tem <span class=\"item-count\">{{ cart_item_count }}</span> itens no seu carrinho"
+      "item_in_cart_html": "Você tem <span class=\"item-count\">1<\/span> item em seu carrinho",
+      "items_in_cart_html": "Você tem <span class=\"item-count\">{{ cart_item_count }}<\/span> itens no seu carrinho"
     },
     "label": {
       "product": "Produto",
@@ -262,10 +262,10 @@
     },
     "onboarding": {
       "modal_title": "Quase lá...",
-      "no_products_html": "Não tem produtos na sua Coleção Frontpage. Esta imagem de preenchimento será exibida até <a href=\"/admin/collections?tutorial=Frontpage\">adicionar um produto a esta coleção</a>.",
+      "no_products_html": "Não tem produtos na sua Coleção Frontpage. Esta imagem de preenchimento será exibida até <a href=\"\/admin\/collections?tutorial=Frontpage\">adicionar um produto a esta coleção<\/a>.",
       "add_product": "Adicionar um produto",
       "product_title": "Título do Produto Exemplo",
-      "no_collections_html": "Ainda não tem coleções para exibir aqui. <a href=\"/admin/custom_collections\">Adicione algumas coleções</a> para continuar com a Frontpage predefinida.",
+      "no_collections_html": "Ainda não tem coleções para exibir aqui. <a href=\"\/admin\/custom_collections\">Adicione algumas coleções<\/a> para continuar com a Frontpage predefinida.",
       "add_collection": "Adicionar uma coleção",
       "collection_title": "Título da Coleção Exemplo",
       "product_description": "Esta área é usada para descrever o seu produto detalhadamente. Informe o cliente do aspeto, toque e estilo do seu produto. Adicione detalhes sobre a cor, materiais usados, tamanhos e onde foi fabricado.",
@@ -298,7 +298,7 @@
     "map": {
       "address_error": "Não é possível localizar o endereço",
       "address_no_results": "Nenhum resultado para este endereço",
-      "address_query_limit_html": "Você excedeu a cota de uso da API do Google. Considere a atualização para um <a href=\"https://developers.google.com/maps/premium/usage-limits\">Plano Premium</a>.",
+      "address_query_limit_html": "Você excedeu a cota de uso da API do Google. Considere a atualização para um <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Plano Premium<\/a>.",
       "auth_error_html": "Houve um problema autenticação de sua conta do Google Maps."
     }
   },
@@ -335,9 +335,9 @@
       "secondary_description_html": "Consulte nossos mais recentes produtos e coleções.",
       "contact_title": "Siga-Nos",
       "contact_description": {
-        "full_html": "Se você tiver alguma dúvida pode contactar-nos em {{ phone }} ou <a href=\"mailto:{{ email }}\">{{ email }}</a>.",
+        "full_html": "Se você tiver alguma dúvida pode contactar-nos em {{ phone }} ou <a href=\"mailto:{{ email }}\">{{ email }}<\/a>.",
         "only_phone_html": "Se você tiver alguma dúvida pode contactar-nos em {{ phone }}.",
-        "only_email_html": "Se você tiver alguma dúvida pode contactar-nos em <a href=\"mailto:{{ email }}\">{{ email }}</a>."
+        "only_email_html": "Se você tiver alguma dúvida pode contactar-nos em <a href=\"mailto:{{ email }}\">{{ email }}<\/a>."
       },
       "accepted_payments": "Formas de Pagamento Aceites"
     },
@@ -356,7 +356,7 @@
     "product": {
       "sold_out": "Esgotado",
       "on_sale": "Em Promoção",
-      "on_sale_from_html": "<strong>Em Promoção</strong> desde {{ price }}",
+      "on_sale_from_html": "<strong>Em Promoção<\/strong> desde {{ price }}",
       "unavailable": "Indisponível",
       "compare_at": "Comparar em",
       "quantity": "Quantidade",
@@ -368,7 +368,7 @@
       "color_option": "cor, colorido",
       "size_option": "tamanho, tamanhos",
       "include_taxes": "Taxas incluídas.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Frete</a> calculado no checkout.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Frete<\/a> calculado no checkout.",
       "unit_price_label": "Preço unitário",
       "view_in_space": "Ver no seu espaço",
       "view_in_space_label": "Ver no seu espaço, carrega item na janela de realidade aumentada"
@@ -393,8 +393,8 @@
       "check_other_stores": "Verificar a disponibilidade noutras lojas",
       "pick_up_available": "Recolha disponível",
       "pick_up_currently_unavailable": "Recolha atualmente indisponível",
-      "pick_up_available_at_html": "Recolha disponível em <strong>{{ location_name }}</strong>",
-      "pick_up_unavailable_at_html": "Recolha atualmente indisponível em <strong>{{ location_name }}</strong>"
+      "pick_up_available_at_html": "Recolha disponível em <strong>{{ location_name }}<\/strong>",
+      "pick_up_unavailable_at_html": "Recolha atualmente indisponível em <strong>{{ location_name }}<\/strong>"
     }
   },
   "password": {
@@ -405,8 +405,8 @@
       "share_title": "Compartilhe a notícia",
       "enter_store_title": "Digite loja usando a senha:",
       "enter_store_button": "Digite usando a senha",
-      "store_owner_html": "Você é o dono da loja? <a href=\"/admin\">Entre aqui</a>",
-      "powered_by_html": "Esta loja será alimentado por <a href=\"http://www.shopify.com/\">Shopify</a>"
+      "store_owner_html": "Você é o dono da loja? <a href=\"\/admin\">Entre aqui<\/a>",
+      "powered_by_html": "Esta loja será alimentado por <a href=\"http:\/\/www.shopify.com\/\">Shopify<\/a>"
     },
     "form": {
       "your_email": "Seu email",

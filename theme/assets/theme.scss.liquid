@@ -4742,6 +4742,13 @@ body.template-index {
       font-size: emHeading(28px);
       text-transform: $primaryTitleTextTransform;
       font-weight: $primaryTitleTextWeight;
+      &.inv {
+        display: inline-block;
+        float: none;
+        background-color: #0b0b0b;
+        color: #F3F3F3;
+        padding:0 0.3em;
+      }
     }
     a.button.outline {
       float: right;
@@ -8938,10 +8945,10 @@ input {
 .shopify-payment-button__button {
   width: 100%;
   min-height: 46px;
-  border-radius: 0;
+  border-radius: 0 50px 50px 0;
   font-family: $navFontStack;
   font-size: em(14px);
-  text-transform: $siteHeaderNavTextTransform;
+  text-transform: none; /* $siteHeaderNavTextTransform; */
   font-weight: $siteHeaderNavTextWeight;
 }
 

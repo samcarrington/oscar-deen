@@ -19,7 +19,7 @@
     },
     "404": {
       "title": "404 Página no encontrada",
-      "subtext_html": "La página que ha solicitado no existe. Haga clic <a href=\"/collections/all\">aquí</a> para continuar la compra."
+      "subtext_html": "La página que ha solicitado no existe. Haga clic <a href=\"\/collections\/all\">aquí<\/a> para continuar la compra."
     },
     "breadcrumbs": {
       "home_link_title": "Volver a la portada",
@@ -40,7 +40,7 @@
       "submit": "Buscar"
     },
     "other": {
-      "theme_credit_html": "Tema diseñado por <a href=\"http://www.stylehatch.com\">Style Hatch</a> |"
+      "theme_credit_html": "Tema diseñado por <a href=\"http:\/\/www.stylehatch.com\">Style Hatch<\/a> |"
     },
     "ui": {
       "close": "Cerca"
@@ -87,19 +87,19 @@
       "note": "Instrucciones especiales para el vendedor",
       "subtotal": "Subtotal",
       "shipping_at_checkout": "Gastos de envío y descuentos calculado al momento de pagar",
-      "currency_at_checkout_html": "{{ shop_name }} proceso de todos los pedidos en {{ shop_currency }}. Aunque el contenido de su carrito se muestra actualmente en <span class=\"selected-currency\"></span>, se le pago y envío {{ shop_currency }} al tipo de cambio más reciente.",
+      "currency_at_checkout_html": "{{ shop_name }} proceso de todos los pedidos en {{ shop_currency }}. Aunque el contenido de su carrito se muestra actualmente en <span class=\"selected-currency\"><\/span>, se le pago y envío {{ shop_currency }} al tipo de cambio más reciente.",
       "update": "Actualizar carrito",
       "checkout": "Finalizar pedido",
       "taxes_and_shipping_at_checkout": "Los impuestos y gastos de envío se calculan en la pantalla de pagos",
-      "taxes_and_shipping_policy_at_checkout_html": "Los impuestos y <a href=\"{{ link }}\">gastos de envío</a> se calculan en la pantalla de pagos",
+      "taxes_and_shipping_policy_at_checkout_html": "Los impuestos y <a href=\"{{ link }}\">gastos de envío<\/a> se calculan en la pantalla de pagos",
       "taxes_included_but_shipping_at_checkout": "En la pantalla de pagos se incluye el impuesto y se calculan los gastos de envío",
-      "taxes_included_and_shipping_policy_html": "Impuesto incluido. Los <a href=\"{{ link }}\">gastos de envío</a> se calculan en la pantalla de pagos.",
+      "taxes_included_and_shipping_policy_html": "Impuesto incluido. Los <a href=\"{{ link }}\">gastos de envío<\/a> se calculan en la pantalla de pagos.",
       "agree_notice": "Usted debe estar de acuerdo con los términos y condiciones de ventas para verificar.",
       "empty": "Su carrito actualmente está vacío.",
-      "continue_browsing_html": "Continúe explorando <a href=\"/collections/all\">aquí</a>.",
+      "continue_browsing_html": "Continúe explorando <a href=\"\/collections\/all\">aquí<\/a>.",
       "close_cart": "Cerrar carrito",
-      "item_in_cart_html": "Tiene <span class=\"item-count\">1</span> artículo en su carrito",
-      "items_in_cart_html": "Tiene <span class=\"item-count\">{{ cart_item_count }}</span> artículos en su carrito",
+      "item_in_cart_html": "Tiene <span class=\"item-count\">1<\/span> artículo en su carrito",
+      "items_in_cart_html": "Tiene <span class=\"item-count\">{{ cart_item_count }}<\/span> artículos en su carrito",
       "continue_shoping": "Seguir Comprando"
     },
     "label": {
@@ -262,10 +262,10 @@
     },
     "onboarding": {
       "modal_title": "Casi allí...",
-      "no_products_html": "No tiene productos en su colección de portada. Este indicador aparecerá hasta que <a href=\"/admin/collections?tutorial=Frontpage\">agregue un producto a esta colección</a>.",
+      "no_products_html": "No tiene productos en su colección de portada. Este indicador aparecerá hasta que <a href=\"\/admin\/collections?tutorial=Frontpage\">agregue un producto a esta colección<\/a>.",
       "add_product": "Añadir un producto",
       "product_title": "Ejemplo título de producto",
-      "no_collections_html": "No tiene colecciones para mostrar aquí. <a href=\"/admin/custom_collections\">Agregue algunas colecciones</a> que acompañen a la Portada por defecto.",
+      "no_collections_html": "No tiene colecciones para mostrar aquí. <a href=\"\/admin\/custom_collections\">Agregue algunas colecciones<\/a> que acompañen a la Portada por defecto.",
       "add_collection": "Añadir una colección",
       "collection_title": "Ejemplo título de colección",
       "product_description": "Este campo se utiliza para describir los detalles de tu producto. Informa a los clientes acerca de la apariencia, percepción y estilo de tu producto. Incluye detalles sobre el color, los materiales utilizados, el tamaño y donde se hizo.",
@@ -298,7 +298,7 @@
     "map": {
       "address_error": "No se puede encontrar esa dirección",
       "address_no_results": "No results for that address",
-      "address_query_limit_html": "Se ha excedido el límite de uso de la API de Google . Considere la posibilidad de actualizar a un <a href=\"https://developers.google.com/maps/premium/usage-limits\">Plan Premium</a>.",
+      "address_query_limit_html": "Se ha excedido el límite de uso de la API de Google . Considere la posibilidad de actualizar a un <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Plan Premium<\/a>.",
       "auth_error_html": "Hubo un problema de autenticación con su cuenta de Google Maps."
     }
   },
@@ -335,9 +335,9 @@
       "secondary_description_html": "Echa un vistazo a nuestros últimos productos y colecciones.",
       "contact_title": "Síguenos",
       "contact_description": {
-        "full_html": "Si usted tiene alguna pregunta puede ponerse en contacto con nosotros en {{ phone }} o <a href=\"mailto:{{ email }}\">{{ email }}</a>.",
+        "full_html": "Si usted tiene alguna pregunta puede ponerse en contacto con nosotros en {{ phone }} o <a href=\"mailto:{{ email }}\">{{ email }}<\/a>.",
         "only_phone_html": "Si usted tiene alguna pregunta puede ponerse en contacto con nosotros en {{ phone }}.",
-        "only_email_html": "Si usted tiene alguna pregunta puede ponerse en contacto con nosotros en <a href=\"mailto:{{ email }}\">{{ email }}</a>."
+        "only_email_html": "Si usted tiene alguna pregunta puede ponerse en contacto con nosotros en <a href=\"mailto:{{ email }}\">{{ email }}<\/a>."
       },
       "accepted_payments": "Pagos aceptados"
     },
@@ -356,7 +356,7 @@
     "product": {
       "sold_out": "Agotado",
       "on_sale": "En oferta",
-      "on_sale_from_html": "<strong>En oferta</strong> desde {{ price }}",
+      "on_sale_from_html": "<strong>En oferta<\/strong> desde {{ price }}",
       "unavailable": "No disponible",
       "compare_at": " Comparar en",
       "quantity": "Cantidad",
@@ -368,7 +368,7 @@
       "color_option": "color",
       "size_option": "tamaño, tamaños, talla",
       "include_taxes": "Impuesto incluido.",
-      "shipping_policy_html": "Los <a href=\"{{ link }}\">gastos de envío</a> se calculan en la pantalla de pagos.",
+      "shipping_policy_html": "Los <a href=\"{{ link }}\">gastos de envío<\/a> se calculan en la pantalla de pagos.",
       "unit_price_label": "Precio unitario",
       "view_in_space": "Ver en tu espacio",
       "view_in_space_label": "Ver en tu espacio, carga el artículo en la ventana de realidad aumentada"
@@ -380,8 +380,8 @@
       "check_other_stores": "Verificar disponibilidad en otras tiendas",
       "pick_up_available": "Retiro disponible",
       "pick_up_currently_unavailable": "Retiro no disponible actualmente",
-      "pick_up_available_at_html": "Retiro disponible en <strong>{{ location_name }}</strong>",
-      "pick_up_unavailable_at_html": "Retiro no disponible actualmente en <strong>{{ location_name }}</strong>"
+      "pick_up_available_at_html": "Retiro disponible en <strong>{{ location_name }}<\/strong>",
+      "pick_up_unavailable_at_html": "Retiro no disponible actualmente en <strong>{{ location_name }}<\/strong>"
     }
   },
   "gift_cards": {
@@ -405,8 +405,8 @@
       "share_title": "Comparte las noticias",
       "enter_store_title": "Entre usando tu contraseña:",
       "enter_store_button": "Entre usando contraseña",
-      "store_owner_html": "¿Eres el dueño de la tienda? <a href=\"/admin\">Entre aquí.</a>",
-      "powered_by_html": "Esta tienda estará propulsado por <a href=\"http://www.shopify.com/\">Shopify</a>"
+      "store_owner_html": "¿Eres el dueño de la tienda? <a href=\"\/admin\">Entre aquí.<\/a>",
+      "powered_by_html": "Esta tienda estará propulsado por <a href=\"http:\/\/www.shopify.com\/\">Shopify<\/a>"
     },
     "form": {
       "your_email": "Email",

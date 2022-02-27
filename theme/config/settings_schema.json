@@ -4,8 +4,8 @@
     "theme_name": "District",
     "theme_author": "Style Hatch",
     "theme_version": "3.10.2",
-    "theme_documentation_url": "https://help.stylehatch.com/",
-    "theme_support_url": "https://help.stylehatch.com/contact"
+    "theme_documentation_url": "https:\/\/help.stylehatch.com\/",
+    "theme_support_url": "https:\/\/help.stylehatch.com\/contact"
   },
   {
     "name": "Colors",
@@ -257,7 +257,7 @@
         "type": "text",
         "id": "newsletter_discount_code",
         "label": "Discount code",
-        "info": "Optional. Automatically apply a [discount code](/admin/discounts) when someone signs up."
+        "info": "Optional. Automatically apply a [discount code](\/admin\/discounts) when someone signs up."
       },
       {
         "type": "url",
@@ -305,7 +305,7 @@
           }
         ],
         "default": "auto",
-        "info": "For best results [all product photos should be the same ratio](https://help.shopify.com/manual/productivity-tools/image-editor#image-aspect-ratio)."
+        "info": "For best results [all product photos should be the same ratio](https:\/\/help.shopify.com\/manual\/productivity-tools\/image-editor#image-aspect-ratio)."
       },
       {
         "type": "checkbox",
@@ -327,7 +327,7 @@
         "type": "checkbox",
         "id": "collection_swatches",
         "label": "Enable swatches",
-        "info": "Upload custom swatch images. [Learn more](https://help.stylehatch.com/article/335-product-color-swatches)",
+        "info": "Upload custom swatch images. [Learn more](https:\/\/help.stylehatch.com\/article\/335-product-color-swatches)",
         "default": false
       },
       {
@@ -503,73 +503,73 @@
         "type": "text",
         "id": "social_twitter_link",
         "label": "Twitter",
-        "info": "https://www.twitter.com/stylehatch"
+        "info": "https:\/\/www.twitter.com\/stylehatch"
       },
       {
         "type": "text",
         "id": "social_facebook_link",
         "label": "Facebook",
-        "info": "https://www.facebook.com/stylehatch"
+        "info": "https:\/\/www.facebook.com\/stylehatch"
       },
       {
         "type": "text",
         "id": "social_instagram_link",
         "label": "Instagram",
-        "info": "https://www.instagram.com/stylehatch"
+        "info": "https:\/\/www.instagram.com\/stylehatch"
       },
       {
         "type": "text",
         "id": "social_pinterest_link",
         "label": "Pinterest",
-        "info": "https://www.pinterest.com/stylehatch"
+        "info": "https:\/\/www.pinterest.com\/stylehatch"
       },
       {
         "type": "text",
         "id": "social_tumblr_link",
         "label": "Tumblr",
-        "info": "http://stylehatch.tumblr.com"
+        "info": "http:\/\/stylehatch.tumblr.com"
       },
       {
         "type": "text",
         "id": "social_youtube_link",
         "label": "YouTube",
-        "info": "https://www.youtube.com/stylehatch"
+        "info": "https:\/\/www.youtube.com\/stylehatch"
       },
       {
         "type": "text",
         "id": "social_snapchat_link",
         "label": "Snapchat",
-        "info": "https://www.snapchat.com/add/stylehatch"
+        "info": "https:\/\/www.snapchat.com\/add\/stylehatch"
       },
       {
         "type": "text",
         "id": "social_spotify_link",
         "label": "Spotify",
-        "info": "https://play.spotify.com/user/stylehatch"
+        "info": "https:\/\/play.spotify.com\/user\/stylehatch"
       },
       {
         "type": "text",
         "id": "social_googleplus_link",
         "label": "Google Plus",
-        "info": "https://plus.google.com/+stylehatch"
+        "info": "https:\/\/plus.google.com\/+stylehatch"
       },
       {
         "type": "text",
         "id": "social_medium_link",
         "label": "Medium",
-        "info": "https://www.medium.com/@stylehatch"
+        "info": "https:\/\/www.medium.com\/@stylehatch"
       },
       {
         "type": "text",
         "id": "social_linkedin_link",
         "label": "LinkedIn",
-        "info": "https://www.linkedin.com/company/stylehatch"
+        "info": "https:\/\/www.linkedin.com\/company\/stylehatch"
       },
       {
         "type": "text",
         "id": "social_amazon_link",
         "label": "Amazon",
-        "info": "https://www.amazon.com/"
+        "info": "https:\/\/www.amazon.com\/"
       },
       {
         "type": "header",

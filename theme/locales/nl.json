@@ -370,8 +370,8 @@
       "check_other_stores": "Controleer de beschikbaarheid van andere winkels",
       "pick_up_available": "Afhaling is beschikbaar",
       "pick_up_currently_unavailable": "Afhaling is momenteel niet beschikbaar",
-      "pick_up_available_at_html": "Afhaling is beschikbaar bij <strong>{{ location_name }}</strong>",
-      "pick_up_unavailable_at_html": "Afhaling is momenteel niet beschikbaar bij <strong>{{ location_name }}</strong>"
+      "pick_up_available_at_html": "Afhaling is beschikbaar bij <strong>{{ location_name }}<\/strong>",
+      "pick_up_unavailable_at_html": "Afhaling is momenteel niet beschikbaar bij <strong>{{ location_name }}<\/strong>"
     }
   },
   "gift_cards": {

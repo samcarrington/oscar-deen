@@ -19,7 +19,7 @@
     },
     "404": {
       "title": "404 Page Not Found",
-      "subtext_html": "The page you requested does not exist. Click <a href=\"/collections/all\">here</a> to continue shopping."
+      "subtext_html": "The page you requested does not exist. Click <a href=\"\/collections\/all\">here<\/a> to continue shopping."
     },
     "breadcrumbs": {
       "home": "Home",
@@ -43,7 +43,7 @@
       "close": "Close"
     },
     "other": {
-      "theme_credit_html": "Theme by <a href=\"http://www.stylehatch.com\">Style Hatch</a> |"
+      "theme_credit_html": "Theme by <a href=\"http:\/\/www.stylehatch.com\">Style Hatch<\/a> |"
     }
   },
   "blogs": {
@@ -87,20 +87,20 @@
       "note": "Special instructions for seller",
       "subtotal": "Subtotal",
       "shipping_at_checkout": "Shipping & taxes calculated at checkout",
-      "currency_at_checkout_html": "{{ shop_name }} process all orders in {{ shop_currency }}. While the content of your cart is currently displayed in <span class=\"selected-currency\"></span>, you will check out using {{ shop_currency }} at the most current exchange rate.",
+      "currency_at_checkout_html": "{{ shop_name }} process all orders in {{ shop_currency }}. While the content of your cart is currently displayed in <span class=\"selected-currency\"><\/span>, you will check out using {{ shop_currency }} at the most current exchange rate.",
       "update": "Update Cart",
       "checkout": "Check Out",
       "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
-      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping</a> calculated at checkout",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping<\/a> calculated at checkout",
       "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
-      "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping<\/a> calculated at checkout.",
       "agree_notice": "You must agree with the terms and conditions of sales to check out.",
       "empty": "Your cart is currently empty.",
-      "continue_browsing_html": "Continue browsing <a href=\"/collections/all\">here</a>.",
+      "continue_browsing_html": "Continue browsing <a href=\"\/collections\/all\">here<\/a>.",
       "close_cart": "Close Cart",
       "continue_shoping": "Continue Shopping",
-      "item_in_cart_html": "You have <span class=\"item-count\">1</span> item in your cart",
-      "items_in_cart_html": "You have <span class=\"item-count\">{{ cart_item_count }}</span> items in your cart"
+      "item_in_cart_html": "You have <span class=\"item-count\">1<\/span> item in your cart",
+      "items_in_cart_html": "You have <span class=\"item-count\">{{ cart_item_count }}<\/span> items in your cart"
     },
     "label": {
       "product": "Product",
@@ -180,7 +180,7 @@
       "city": "City",
       "country": "Country",
       "province": "State",
-      "zip": "Postal/Zip Code",
+      "zip": "Postal\/Zip Code",
       "phone": "Phone",
       "set_default": "Set as default address",
       "add": "Add Address",
@@ -288,7 +288,7 @@
     "map": {
       "address_error": "Error looking up that address",
       "address_no_results": "No results for that address",
-      "address_query_limit_html": "You have exceeded the Google API usage limit. Consider upgrading to a <a href=\"https://developers.google.com/maps/premium/usage-limits\">Premium Plan</a>.",
+      "address_query_limit_html": "You have exceeded the Google API usage limit. Consider upgrading to a <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Premium Plan<\/a>.",
       "auth_error_html": "There was a problem authenticating your Google Maps account."
     }
   },
@@ -329,9 +329,9 @@
       "newsletter_description_html": "Subscribe to be the first to hear about our exclusive offers and latest arrivals!",
       "contact_title": "Get In Touch",
       "contact_description": {
-        "full_html": "Contact us at {{ phone }} or <a href=\"mailto:{{ email }}\">{{ email }}</a>",
+        "full_html": "Contact us at {{ phone }} or <a href=\"mailto:{{ email }}\">{{ email }}<\/a>",
         "only_phone_html": "Contact us at {{ phone }}",
-        "only_email_html": "Contact us <a href=\"mailto:{{ email }}\">{{ email }}</a>"
+        "only_email_html": "Contact us <a href=\"mailto:{{ email }}\">{{ email }}<\/a>"
       },
       "accepted_payments": "Accepted Payments"
     }
@@ -346,7 +346,7 @@
     "product": {
       "sold_out": "Sold Out",
       "on_sale": "On Sale",
-      "on_sale_from_html": "<strong>On Sale</strong> from {{ price }}",
+      "on_sale_from_html": "<strong>On Sale<\/strong> from {{ price }}",
       "unavailable": "Unavailable",
       "compare_at": "Compare at",
       "quantity": "Quantity",
@@ -358,7 +358,7 @@
       "color_option": "color",
       "size_option": "size",
       "include_taxes": "Tax included.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping<\/a> calculated at checkout.",
       "unit_price_label": "Unit price",
       "view_in_space": "View in your space",
       "view_in_space_label": "View in your space, loads item in augmented reality window"
@@ -370,8 +370,8 @@
       "check_other_stores": "Check availability at other stores",
       "pick_up_available": "Pickup available",
       "pick_up_currently_unavailable": "Pickup currently unavailable",
-      "pick_up_available_at_html": "Pickup available at <strong>{{ location_name }}</strong>",
-      "pick_up_unavailable_at_html": "Pickup currently unavailable at <strong>{{ location_name }}</strong>"
+      "pick_up_available_at_html": "Pickup available at <strong>{{ location_name }}<\/strong>",
+      "pick_up_unavailable_at_html": "Pickup currently unavailable at <strong>{{ location_name }}<\/strong>"
     }
   },
   "gift_cards": {
@@ -395,8 +395,8 @@
       "share_title": "Share the news",
       "enter_store_title": "Enter store using password:",
       "enter_store_button": "Enter using password",
-      "store_owner_html": "Are you the store owner? <a href=\"/admin\">Log in here</a>",
-      "powered_by_html": "This shop will be powered by <a href=\"http://www.shopify.com/\">Shopify</a>"
+      "store_owner_html": "Are you the store owner? <a href=\"\/admin\">Log in here<\/a>",
+      "powered_by_html": "This shop will be powered by <a href=\"http:\/\/www.shopify.com\/\">Shopify<\/a>"
     },
     "form": {
       "your_email": "Your email",
