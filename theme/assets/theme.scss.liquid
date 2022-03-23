@@ -4732,6 +4732,15 @@ body.template-index {
 // Simple collection with a header
 .simple-collection {
   padding: $verticalContainerPadding 20px;
+
+  .product_card__image-wrapper {
+    background: white;
+    border: 1px solid lightgray;
+    border-width: 1px 1px 1px 0;
+  }
+
+
+
   header {
     @include clearfix();
     position: relative;
@@ -4794,6 +4803,29 @@ body.template-index {
         @include grid-item(12);
         {% endif %}
       }
+    }
+  }
+
+  .product-container .box:first-of-type .product_card__image-wrapper{
+    border-width: 1px;
+  }
+
+  .product-container {
+    .box:nth-of-type(2n-1) {
+      @include mediaQuery($max, $tablet) {
+        .product_card__image-wrapper {
+          border-width: 1px;
+        }
+      }
+    }
+  }
+
+  // squish elements together
+  .product-container {
+    margin-left: 0!important;
+
+    > * {
+      padding-left: 0!important;
     }
   }
 

@@ -38,12 +38,9 @@
           {% unless collection.handle == 'frontpage' %}
             <div class="collection-container">
               <header>
-                <h4 class="inv">{{ collection.title }}</h4>
-                {% comment %}<a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>{% endcomment %}
-                {% if collection.description != blank %}
-                  <div class="description rte">
-                    {{ collection.description }}
-                  </div>
+                <h4>{{ collection.title }}</h4>
+                {% if collection.products_count > 4 %}
+                  <a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>
                 {% endif %}
               </header>
 
@@ -63,31 +60,48 @@
         {% for block in section.blocks %}
           {%- assign collection = collections[block.settings.collection] -%}
           <div class="collection-container">
-
-
-            <div class="product-container">
-              {% for product in collection.products limit:4 %}
-                {% include 'product-grid-item' %}
-              {% else %}
-                {% for i in (1..4) %}
-                  {% include 'placeholder-product-grid-item' %}
-                {% endfor %}
-              {% endfor %}
-            </div>
-
             <header>
-              <h4 class="inv">{{ collection.title }}</h4>
-              {% comment %}<a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>{% endcomment %}
-              {% if collection.description != blank %}
-                <div class="description rte">
-                  {{ collection.description }}
-                </div>
+              <h4>{{ collection.title }}</h4>
+              {% if collection.products_count > 8 %}
+                {% paginate collection.products by 8 %}
+                  <div id="AjaxinatePagination-{{ collection.id }}">
+                    {% if paginate.next %}
+                      <a href="{{ paginate.next.url }}" class="button outline">See More</a>
+                    {% endif %}
+                  </div>
+                {% endpaginate %}
+                {% comment %}
+                  <a href="{{ collection.url }}" class="button outline">{{ 'collections.general.all_of_collection' | t: collection: collection.title }}</a>
+                {% endcomment %}
               {% endif %}
-              <div>
-                {% for product in collection.products %}
-
-                {% endfor %}
             </header>
+
+            <div id="AjaxinateContainer-{{ collection.id }}" class="product-container">
+              {% if collection.products_count > 8 %}
+                {% paginate collection.products by 8 %}
+                  {% for product in collection.products %}
+                    {% include 'product-grid-item' %}
+                  {% endfor %}
+                {% endpaginate %}
+                <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                    var endlessScroll = new Ajaxinate({
+                      container: '#AjaxinateContainer-{{ collection.id }}',
+                      pagination: '#AjaxinatePagination-{{ collection.id }}',
+                      method: 'click'
+                    });
+                  });
+                </script>
+              {% else %}
+                {% for product in collection.products limit:8 %}
+                  {% include 'product-grid-item' %}
+                {% else %}
+                  {% for i in (1..4) %}
+                    {% include 'placeholder-product-grid-item' %}
+                  {% endfor %}
+                {% endfor %}
+              {% endif %}
+            </div>
           </div>
         {% endfor %}
       {% endif %}
@@ -129,12 +143,12 @@
                                 {% assign image_widths = '295,394,590,700,800,1000,1200,1500,1800,2000,2400' %}
                                 {% include 'theme-rias' %}
                                 <img class="card__image lazyload"
-                                  src="{{ image | img_url: '295x' }}"
-                                  data-src="{{ image_url_pattern }}"
-                                  data-widths="[{{ image_widths }}]"
-                                  data-aspectratio="{{ image.aspect_ratio }}"
-                                  data-sizes="auto"
-                                  alt="{{ image.alt | escape }}">
+                                     src="{{ image | img_url: '295x' }}"
+                                     data-src="{{ image_url_pattern }}"
+                                     data-widths="[{{ image_widths }}]"
+                                     data-aspectratio="{{ image.aspect_ratio }}"
+                                     data-sizes="auto"
+                                     alt="{{ image.alt | escape }}">
                                 <noscript>
                                   <img class="card__image" src="{{ image | img_url: '394x' }}" alt="{{ image.alt | escape }}">
                                 </noscript>
@@ -164,52 +178,52 @@
                   {% endif %}
                 {% endif %}
 
-                  <div class="box" style="margin-bottom:40px;">
-                    {% if collection.empty? %}
-                      {% comment %}
-                        Placholder
-                      {% endcomment %}
-                      <a href="#">
-                        <figure>
-                          <div class="image-table">
-                            <div class="image-cell">
-                              {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-                              {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                <div class="box" style="margin-bottom:40px;">
+                  {% if collection.empty? %}
+                    {% comment %}
+                      Placholder
+                    {% endcomment %}
+                    <a href="#">
+                      <figure>
+                        <div class="image-table">
+                          <div class="image-cell">
+                            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                          </div>
+                        </div>
+                      </figure>
+                    </a>
+                    <figcaption class="below" style="margin-top:0px;">
+                      <h3><a href="#">{{ 'homepage.onboarding.collection_title' | t }}</a></h3>
+                    </figcaption>
+                  {% else %}
+                    <a href="{{ collection.url }}">
+                      <figure>
+                        <div class="image-table">
+                          <div class="image-cell">
+                            <div class="card__image-wrapper" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%">
+                              {% assign image_widths = '295,394,590,700,800,1000,1200,1500,1800,2000,2400' %}
+                              {% include 'theme-rias' %}
+                              <img class="card__image lazyload"
+                                   src="{{ image | img_url: '295x' }}"
+                                   data-src="{{ image_url_pattern }}"
+                                   data-widths="[{{ image_widths }}]"
+                                   data-aspectratio="{{ image.aspect_ratio }}"
+                                   data-sizes="auto"
+                                   alt="{{ image.alt | escape }}">
+                              <noscript>
+                                <img class="card__image" src="{{ image | img_url: '394x' }}" alt="{{ image.alt | escape }}">
+                              </noscript>
                             </div>
                           </div>
-                        </figure>
-                      </a>
-                      <figcaption class="below" style="margin-top:0px;">
-                        <h3><a href="#">{{ 'homepage.onboarding.collection_title' | t }}</a></h3>
-                      </figcaption>
-                    {% else %}
-                      <a href="{{ collection.url }}">
-                        <figure>
-                          <div class="image-table">
-                            <div class="image-cell">
-                              <div class="card__image-wrapper" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%">
-                                {% assign image_widths = '295,394,590,700,800,1000,1200,1500,1800,2000,2400' %}
-                                {% include 'theme-rias' %}
-                                <img class="card__image lazyload"
-                                  src="{{ image | img_url: '295x' }}"
-                                  data-src="{{ image_url_pattern }}"
-                                  data-widths="[{{ image_widths }}]"
-                                  data-aspectratio="{{ image.aspect_ratio }}"
-                                  data-sizes="auto"
-                                  alt="{{ image.alt | escape }}">
-                                <noscript>
-                                  <img class="card__image" src="{{ image | img_url: '394x' }}" alt="{{ image.alt | escape }}">
-                                </noscript>
-                              </div>
-                            </div>
-                          </div>
-                        </figure>
-                      </a>
-                      <figcaption class="below" style="margin-top:0px;">
-                        <h3><a href="{{ collection.url }}">{{ collection.title }}</a></h3>
-                      </figcaption>
-                    {% endif %}
-                  </div>
+                        </div>
+                      </figure>
+                    </a>
+                    <figcaption class="below" style="margin-top:0px;">
+                      <h3><a href="{{ collection.url }}">{{ collection.title }}</a></h3>
+                    </figcaption>
+                  {% endif %}
+                </div>
 
               {% endfor %}
             {% endif %}
@@ -222,48 +236,48 @@
 </section>
 {% schema %}
 {
-  "name": "List collection page",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "All collections"
-    },
-    {
-      "type": "radio",
-      "id": "layout",
-      "label": "Layout mode",
-      "options": [
-        { "value": "preview", "label": "Preview" },
-        { "value": "grid", "label": "Grid" }
-      ],
-      "default": "preview"
-    },
-    {
-      "type": "radio",
-      "id": "list_mode",
-      "label": "List mode",
-      "options": [
-        { "value": "default", "label": "All collections alphabetical" },
-        { "value": "manual", "label": "Manual" }
-      ],
-      "default": "default",
-      "info": "Add collection blocks to manually control the collections and order"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "collection",
-      "name": "Collection",
-      "settings": [
-        {
-          "label": "Collection",
-          "id": "collection",
-          "type": "collection"
-        }
-      ]
-    }
-  ]
+"name": "List collection page",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Heading",
+"default": "All collections"
+},
+{
+"type": "radio",
+"id": "layout",
+"label": "Layout mode",
+"options": [
+{ "value": "preview", "label": "Preview" },
+{ "value": "grid", "label": "Grid" }
+],
+"default": "preview"
+},
+{
+"type": "radio",
+"id": "list_mode",
+"label": "List mode",
+"options": [
+{ "value": "default", "label": "All collections alphabetical" },
+{ "value": "manual", "label": "Manual" }
+],
+"default": "default",
+"info": "Add collection blocks to manually control the collections and order"
+}
+],
+"blocks": [
+{
+"type": "collection",
+"name": "Collection",
+"settings": [
+{
+"label": "Collection",
+"id": "collection",
+"type": "collection"
+}
+]
+}
+]
 }
 {% endschema %}
